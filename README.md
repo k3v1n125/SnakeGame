@@ -6,6 +6,13 @@ Source: https://github.com/janbodnar/Java-Snake-Game
 The original code is licensed under the BSD 2-Clause License (2020, Jan Bodnar). <br>
 Modifications and additional features have been added in this project.
 
+## Running this program
+Make sure you have java installed, then move to SnakeGame directory and run:
+```bash
+javac -cp src src/com/zetcode/*.java
+java -cp src com.zetcode.Snake
+```
+
 ## Modification
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
