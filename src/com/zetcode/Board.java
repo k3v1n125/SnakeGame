@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import com.zetcode.Item.Apple;
+
 import java.time.Duration;
 import java.time.Instant;
 

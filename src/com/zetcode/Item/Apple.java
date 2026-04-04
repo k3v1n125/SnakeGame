@@ -1,8 +1,10 @@
-package com.zetcode;
+package com.zetcode.Item;
 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.time.Instant;
+
+import com.zetcode.Board;
 
 public class Apple implements Item {
     private Image image;
