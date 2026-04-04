@@ -48,6 +48,8 @@ public class Board extends JPanel implements ActionListener {
     private Instant startTime;
     private Instant endTime;
 
+    private Apple appleItem;
+
     public Board(Instant startTime) {
         this.startTime = startTime;
         initBoard();
@@ -102,7 +104,7 @@ public class Board extends JPanel implements ActionListener {
         
         if (inGame) {
 
-            g.drawImage(apple, apple_x, apple_y, this);
+            appleItem.draw(g, this);
 
             for (int z = 0; z < dots; z++) {
                 if (z == 0) {
@@ -205,6 +207,7 @@ public class Board extends JPanel implements ActionListener {
 
         r = (int) (Math.random() * RAND_POS);
         apple_y = ((r * DOT_SIZE));
+        appleItem = new Apple(apple, apple_x, apple_y);
     }
 
     @Override

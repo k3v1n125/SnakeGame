@@ -1,9 +1,9 @@
 ## Acknowledgements
 
-This project is based on the Snake game implementation by Jan Bodnar.
+This project is based on the Snake game implementation by Jan Bodnar. <br>
 Source: https://github.com/janbodnar/Java-Snake-Game
 
-The original code is licensed under the BSD 2-Clause License (2020, Jan Bodnar).
+The original code is licensed under the BSD 2-Clause License (2020, Jan Bodnar). <br>
 Modifications and additional features have been added in this project.
 
 ## Modification
@@ -42,3 +42,9 @@ private void gameOver(Graphics g) {
     g.drawString(msg2, (B_WIDTH - metr.stringWidth(msg2)) / 2, B_HEIGHT / 2 + 20);
 }
 ```
+
+### Make apple into a java class implementing Item interface
+Interface: ```Item.java``` <br>
+New Apple class: ```Apple.java``` <br>
+```locateApple()``` would create the Apple object <br>
+This makes it easier to add new items to the game
