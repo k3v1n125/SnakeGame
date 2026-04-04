@@ -1,2 +1,3 @@
 src/com/zetcode/*.class
 src/com/zetcode/Item/*.class
+src/com/zetcode/ItemFactory/*.class

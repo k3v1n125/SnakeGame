@@ -1,41 +1,26 @@
 package com.zetcode.Item;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.time.Instant;
 
 import com.zetcode.Board;
+import com.zetcode.ItemFactory.AppleFactory;
 
-public class Apple implements Item {
-    private Image image;
-    private int x;
-    private int y;
-    private Instant applePlacedTime;
+public class Apple extends Item {
+    private AppleFactory factory;
 
     public Apple(Image image, int x, int y, Instant applePlacedTime) {
-        this.image = image;
-        this.x = x;
-        this.y = y;
-        this.applePlacedTime = applePlacedTime;
-    }
-    
-    @Override
-    public void draw(Graphics g, Board board) {
-        g.drawImage(image, x, y, board);
+        super(image, x, y, applePlacedTime);
+        factory = new AppleFactory(image);
     }
 
     @Override
-    public int getX() {
-        return x;
+    public void locateItem(Board board) {
+        board.locateItem(factory);
     }
 
     @Override
-    public int getY() {
-        return y;
-    }
-
-    @Override
-    public Instant getPlacedTime() {
-        return applePlacedTime;
+    public void itemEffect(Board board) {
+        board.setDots(board.getDots() + 1);
     }
 }

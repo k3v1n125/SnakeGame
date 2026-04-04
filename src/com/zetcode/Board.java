@@ -15,22 +15,30 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import com.zetcode.Item.Apple;
+import com.zetcode.Item.Item;
+import com.zetcode.ItemFactory.AppleFactory;
+import com.zetcode.ItemFactory.ItemFactory;
+import com.zetcode.ItemFactory.StarFactory;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 
 public class Board extends JPanel implements ActionListener {
 
-    private final int B_WIDTH = 300;
-    private final int B_HEIGHT = 300;
-    private final int DOT_SIZE = 10;
+    private final int B_WIDTH = 600;
+    private final int B_HEIGHT = 600;
+    private final int DOT_SIZE = 20;
     private final int ALL_DOTS = 900;
     private final int RAND_POS = 29;
     private final int DELAY = 140;
 
     private final int x[] = new int[ALL_DOTS];
     private final int y[] = new int[ALL_DOTS];
+
+    private final int introduceStar = 7;
+    private boolean starIntroduced = false;
+    private int starCollected = 0;
 
     private int dots;
 
@@ -42,20 +50,45 @@ public class Board extends JPanel implements ActionListener {
 
     private Timer timer;
     private Image ball;
-    private Image apple;
+    private Image appleImage;
+    private Image starImage;
     private Image head;
 
     private Instant startTime;
     private Instant endTime;
+    private int extraLife = 0;
 
-    private Apple appleItem;
-    private int appleMissed = 0;
+    private ArrayList<Item> items = new ArrayList<Item>();
 
     public Board(Instant startTime) {
         this.startTime = startTime;
         initBoard();
     }
+
+    public int getDots() {
+        return dots;
+    }
     
+    public void setDots(int dots) {
+        this.dots = dots;
+    }
+
+    public int getExtraLife() {
+        return extraLife;
+    }
+
+    public void setExtraLife(int extraLife) {
+        this.extraLife = extraLife;
+    }
+
+    public int getStarCollected() {
+        return starCollected;
+    }
+
+    public void setStarCollected(int starCollected) {
+        this.starCollected = starCollected;
+    }
+
     private void initBoard() {
 
         addKeyListener(new TAdapter());
@@ -73,7 +106,9 @@ public class Board extends JPanel implements ActionListener {
         ball = iid.getImage();
 
         ImageIcon iia = new ImageIcon("src/resources/apple.png");
-        apple = iia.getImage();
+        appleImage = iia.getImage();
+        ImageIcon iis = new ImageIcon("src/resources/star.png");
+        starImage = iis.getImage();
 
         ImageIcon iih = new ImageIcon("src/resources/head.png");
         head = iih.getImage();
@@ -84,11 +119,11 @@ public class Board extends JPanel implements ActionListener {
         dots = 3;
 
         for (int z = 0; z < dots; z++) {
-            x[z] = 50 - z * 10;
-            y[z] = 50;
+            x[z] = 4 * DOT_SIZE - z * DOT_SIZE;
+            y[z] = 2 * DOT_SIZE;
         }
         
-        locateApple();
+        locateItem(new AppleFactory(appleImage));
 
         timer = new Timer(DELAY, this);
         timer.start();
@@ -105,59 +140,60 @@ public class Board extends JPanel implements ActionListener {
         
         if (inGame) {
 
-            if (appleItem != null) {
-                appleItem.draw(g, this);
+            for (Item item : items) {
+                item.draw(g, this);
             }
 
             for (int z = 0; z < dots; z++) {
                 if (z == 0) {
-                    g.drawImage(head, x[z], y[z], this);
+                    g.drawImage(head, x[z], y[z], DOT_SIZE, DOT_SIZE, this);
                 } else {
-                    g.drawImage(ball, x[z], y[z], this);
+                    g.drawImage(ball, x[z], y[z], DOT_SIZE, DOT_SIZE, this);
                 }
             }
 
             Toolkit.getDefaultToolkit().sync();
 
         } else {
-
             gameOver(g);
         }        
     }
 
     private void gameOver(Graphics g) {
-        endTime = Instant.now();
         Duration duration = Duration.between(startTime, endTime);
         int appleCollected = dots - 3;
-        long averageTimePerApple;
-        if (appleCollected == 0) {
-            averageTimePerApple = 0;
-        } else {
-            averageTimePerApple = duration.toSeconds() / appleCollected;
-        }
         
         String msg1 = "Game Over";
         String msg2 = "Duration: " + duration.toSeconds() + " seconds";
         String msg3 = "Apples Collected: " + appleCollected;
-        String msg4 = "Average Time Per Apple: " + averageTimePerApple + " seconds";
+        String msg4 = "Stars Collected: " + starCollected;
 
-        Font small = new Font("Helvetica", Font.BOLD, 14);
+        Font small = new Font("Helvetica", Font.BOLD, 28);
         FontMetrics metr = getFontMetrics(small);
 
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString(msg1, (B_WIDTH - metr.stringWidth(msg1)) / 2, B_HEIGHT / 2 - 21);
-        g.drawString(msg2, (B_WIDTH - metr.stringWidth(msg2)) / 2, B_HEIGHT / 2 - 7);
-        g.drawString(msg3, (B_WIDTH - metr.stringWidth(msg3)) / 2, B_HEIGHT / 2 + 7);
-        g.drawString(msg4, (B_WIDTH - metr.stringWidth(msg4)) / 2, B_HEIGHT / 2 + 21);
+        g.drawString(msg1, (B_WIDTH - metr.stringWidth(msg1)) / 2, B_HEIGHT / 2 - 42);
+        g.drawString(msg2, (B_WIDTH - metr.stringWidth(msg2)) / 2, B_HEIGHT / 2 - 14);
+        g.drawString(msg3, (B_WIDTH - metr.stringWidth(msg3)) / 2, B_HEIGHT / 2 + 14);
+        g.drawString(msg4, (B_WIDTH - metr.stringWidth(msg4)) / 2, B_HEIGHT / 2 + 42);
     }
 
-    private void checkApple() {
-
-        if (appleItem != null && (x[0] == appleItem.getX()) && (y[0] == appleItem.getY())) {
-
-            dots++;
-            locateApple();
+    private void checkItem() {
+        ArrayList<Item> removeItems = new ArrayList<>();
+        for (Item item : items) {
+            if ((x[0] == item.getX()) && (y[0] == item.getY())) {
+                item.itemEffect(this);
+                removeItems.add(item);
+            }
+        }
+        items.removeAll(removeItems);
+        for (Item item : removeItems) {
+            item.locateItem(this);
+        }
+        if (dots == introduceStar && !starIntroduced) {
+            locateItem(new StarFactory(starImage));
+            starIntroduced = true;
         }
     }
 
@@ -190,7 +226,11 @@ public class Board extends JPanel implements ActionListener {
         for (int z = dots; z > 0; z--) {
 
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
-                inGame = false;
+                if (extraLife >= 5) {
+                    extraLife = extraLife - 5;
+                } else {
+                    inGame = false;
+                }
             }
         }
 
@@ -211,32 +251,35 @@ public class Board extends JPanel implements ActionListener {
         }
         
         if (!inGame) {
+            endTime = Instant.now();
             timer.stop();
         }
     }
 
-    private void locateApple() {
-
+    public void locateItem(ItemFactory factory) {
         int r = (int) (Math.random() * RAND_POS);
-        int apple_x = ((r * DOT_SIZE));
+        int item_x = ((r * DOT_SIZE));
 
         r = (int) (Math.random() * RAND_POS);
-        int apple_y = ((r * DOT_SIZE));
-        appleItem = new Apple(apple, apple_x, apple_y, Instant.now());
+        int item_y = ((r * DOT_SIZE));
+        items.add(factory.create(item_x, item_y, Instant.now()));
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        ArrayList<Item> removeItems = new ArrayList<Item>();
 
         if (inGame) {
-
-            if (appleItem != null && Duration.between(appleItem.getPlacedTime(), Instant.now()).getSeconds() >= 5) {
-                appleItem = null;
-                appleMissed = appleMissed + 1;
-                locateApple();
+            for (Item item : items) {
+                if (Duration.between(item.getPlacedTime(), Instant.now()).getSeconds() >= 5) {
+                    removeItems.add(item);
+                }
             }
-
-            checkApple();
+            items.removeAll(removeItems);
+            for (Item item : removeItems) {
+                item.locateItem(this);
+            }
+            checkItem();
             checkCollision();
             move();
         }

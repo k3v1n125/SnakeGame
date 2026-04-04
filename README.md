@@ -79,3 +79,8 @@ public void actionPerformed(ActionEvent e) {
     repaint();
 }
 ```
+
+### 5. New star item
+After collecting 4 apples, stars will starts to appear <br>
+For each 5 stars collected, the snake can have an extra life to avoid touching itself <br>
+Items are now created by ItemFactory.java
