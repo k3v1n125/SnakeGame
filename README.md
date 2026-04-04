@@ -8,7 +8,7 @@ Modifications and additional features have been added in this project.
 
 ## Modification
 
-### A "stopwatch" for the game, shows the time the snake survive when game over
+### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
 Declear startTime when initUI() in Snake and pass it to Board
 ```bash
@@ -43,8 +43,32 @@ private void gameOver(Graphics g) {
 }
 ```
 
-### Make apple into a java class implementing Item interface
+### 2. Make apple into a java class implementing Item interface
 Interface: ```Item.java``` <br>
 New Apple class: ```Apple.java``` <br>
 ```locateApple()``` would create the Apple object <br>
 This makes it easier to add new items to the game
+
+### 3. Score calculated and shown when game over
+Get the ammount of apple collected by substracting length of snake by 3 (initial length) <br>
+Calculated average time per apple
+
+### 4. Time limit for apple
+Apple would disappear after 5 seconds if not collected
+```bash
+public void actionPerformed(ActionEvent e) {
+    if (inGame) {
+        if (appleItem != null && Duration.between(appleItem.getPlacedTime(), Instant.now()).getSeconds() >= 5) {
+            appleItem = null;
+            appleMissed = appleMissed + 1;
+            locateApple();
+        }
+
+        checkApple();
+        checkCollision();
+        move();
+    }
+
+    repaint();
+}
+```

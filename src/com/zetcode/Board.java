@@ -31,8 +31,6 @@ public class Board extends JPanel implements ActionListener {
     private final int y[] = new int[ALL_DOTS];
 
     private int dots;
-    private int apple_x;
-    private int apple_y;
 
     private boolean leftDirection = false;
     private boolean rightDirection = true;
@@ -49,6 +47,7 @@ public class Board extends JPanel implements ActionListener {
     private Instant endTime;
 
     private Apple appleItem;
+    private int appleMissed = 0;
 
     public Board(Instant startTime) {
         this.startTime = startTime;
@@ -104,7 +103,9 @@ public class Board extends JPanel implements ActionListener {
         
         if (inGame) {
 
-            appleItem.draw(g, this);
+            if (appleItem != null) {
+                appleItem.draw(g, this);
+            }
 
             for (int z = 0; z < dots; z++) {
                 if (z == 0) {
@@ -125,21 +126,33 @@ public class Board extends JPanel implements ActionListener {
     private void gameOver(Graphics g) {
         endTime = Instant.now();
         Duration duration = Duration.between(startTime, endTime);
+        int appleCollected = dots - 3;
+        long averageTimePerApple;
+        if (appleCollected == 0) {
+            averageTimePerApple = 0;
+        } else {
+            averageTimePerApple = duration.toSeconds() / appleCollected;
+        }
         
         String msg1 = "Game Over";
         String msg2 = "Duration: " + duration.toSeconds() + " seconds";
+        String msg3 = "Apples Collected: " + appleCollected;
+        String msg4 = "Average Time Per Apple: " + averageTimePerApple + " seconds";
+
         Font small = new Font("Helvetica", Font.BOLD, 14);
         FontMetrics metr = getFontMetrics(small);
 
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString(msg1, (B_WIDTH - metr.stringWidth(msg1)) / 2, B_HEIGHT / 2 - 20);
-        g.drawString(msg2, (B_WIDTH - metr.stringWidth(msg2)) / 2, B_HEIGHT / 2 + 20);
+        g.drawString(msg1, (B_WIDTH - metr.stringWidth(msg1)) / 2, B_HEIGHT / 2 - 21);
+        g.drawString(msg2, (B_WIDTH - metr.stringWidth(msg2)) / 2, B_HEIGHT / 2 - 7);
+        g.drawString(msg3, (B_WIDTH - metr.stringWidth(msg3)) / 2, B_HEIGHT / 2 + 7);
+        g.drawString(msg4, (B_WIDTH - metr.stringWidth(msg4)) / 2, B_HEIGHT / 2 + 21);
     }
 
     private void checkApple() {
 
-        if ((x[0] == apple_x) && (y[0] == apple_y)) {
+        if (appleItem != null && (x[0] == appleItem.getX()) && (y[0] == appleItem.getY())) {
 
             dots++;
             locateApple();
@@ -203,17 +216,23 @@ public class Board extends JPanel implements ActionListener {
     private void locateApple() {
 
         int r = (int) (Math.random() * RAND_POS);
-        apple_x = ((r * DOT_SIZE));
+        int apple_x = ((r * DOT_SIZE));
 
         r = (int) (Math.random() * RAND_POS);
-        apple_y = ((r * DOT_SIZE));
-        appleItem = new Apple(apple, apple_x, apple_y);
+        int apple_y = ((r * DOT_SIZE));
+        appleItem = new Apple(apple, apple_x, apple_y, Instant.now());
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (inGame) {
+
+            if (appleItem != null && Duration.between(appleItem.getPlacedTime(), Instant.now()).getSeconds() >= 5) {
+                appleItem = null;
+                appleMissed = appleMissed + 1;
+                locateApple();
+            }
 
             checkApple();
             checkCollision();
