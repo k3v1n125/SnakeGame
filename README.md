@@ -84,3 +84,5 @@ public void actionPerformed(ActionEvent e) {
 After collecting 4 apples, stars will starts to appear <br>
 For each 5 stars collected, the snake can have an extra life to avoid touching itself <br>
 Items are now created by ItemFactory.java
+
+### Expected next modification: add another panel showing current stats
