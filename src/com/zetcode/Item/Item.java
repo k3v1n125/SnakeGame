@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.time.Instant;
 
 import com.zetcode.Board;
+import com.zetcode.StatsBoard.GameStats;
 
 public abstract class Item {
     private final int DOT_SIZE = 20;
@@ -37,5 +38,5 @@ public abstract class Item {
     }
 
     public abstract void locateItem(Board board);
-    public abstract void itemEffect(Board board);
+    public abstract void itemEffect(GameStats gameStats);
 }

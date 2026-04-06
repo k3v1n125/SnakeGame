@@ -9,11 +9,22 @@ Modifications and additional features have been added in this project.
 ## Running this program
 Make sure you have java installed, then move to SnakeGame directory and run:
 ```bash
-javac -cp src src/com/zetcode/*.java
+javac -cp src src/com/zetcode/*.java src/com/zetcode/Item/*.java src/com/zetcode/StatsBoard/*.java src/com/zetcode/ItemFactory/*.java
+```
+```bash
 java -cp src com.zetcode.Snake
 ```
 
 ## Modification
+
+### Content
+
+[Modification #1](#1-a-stopwatch-for-the-game-shows-the-time-the-snake-survive-when-game-over) <br>
+[Modification #2](#2-make-apple-into-a-java-class-implementing-item-interface) <br>
+[Modification #3](#3-score-calculated--shown-when-game-over) <br>
+[Modification #4](#4-time-limit-for-apple) <br>
+[Modification #5](#5-new-star-item) <br>
+[Modification #6](#6-stats-board--bug-fix)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
@@ -56,7 +67,7 @@ New Apple class: ```Apple.java``` <br>
 ```locateApple()``` would create the Apple object <br>
 This makes it easier to add new items to the game
 
-### 3. Score calculated and shown when game over
+### 3. Score calculated & shown when game over
 Get the ammount of apple collected by substracting length of snake by 3 (initial length) <br>
 Calculated average time per apple
 
@@ -85,4 +96,7 @@ After collecting 4 apples, stars will starts to appear <br>
 For each 5 stars collected, the snake can have an extra life to avoid touching itself <br>
 Items are now created by ItemFactory.java
 
-### Expected next modification: add another panel showing current stats
+### 6. Stats board & bug fix
+Add a stats borad next to snake window to show current snake's stats <br>
+Move all the stats (applesColledted, snakeLength, etc) into GameStats class <br>
+Bug fix: add a ```moved``` boolean in Board class to avoid reversing into itself when two keys are press at the same time

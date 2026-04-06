@@ -5,6 +5,7 @@ import java.time.Instant;
 
 import com.zetcode.Board;
 import com.zetcode.ItemFactory.StarFactory;
+import com.zetcode.StatsBoard.GameStats;
 
 public class Star extends Item {
     private StarFactory factory;
@@ -20,8 +21,7 @@ public class Star extends Item {
     }
     
     @Override
-    public void itemEffect(Board board) {
-        board.setExtraLife(board.getExtraLife() + 1);
-        board.setStarCollected(board.getStarCollected() + 1);
+    public void itemEffect(GameStats gameStats) {
+        gameStats.increaseStarCollected();
     }
 }

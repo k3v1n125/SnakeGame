@@ -19,6 +19,7 @@ import com.zetcode.Item.Item;
 import com.zetcode.ItemFactory.AppleFactory;
 import com.zetcode.ItemFactory.ItemFactory;
 import com.zetcode.ItemFactory.StarFactory;
+import com.zetcode.StatsBoard.StatsBoard;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -36,11 +37,8 @@ public class Board extends JPanel implements ActionListener {
     private final int x[] = new int[ALL_DOTS];
     private final int y[] = new int[ALL_DOTS];
 
-    private final int introduceStar = 7;
+    private final int introduceStar = 4;
     private boolean starIntroduced = false;
-    private int starCollected = 0;
-
-    private int dots;
 
     private boolean leftDirection = false;
     private boolean rightDirection = true;
@@ -49,44 +47,20 @@ public class Board extends JPanel implements ActionListener {
     private boolean inGame = true;
 
     private Timer timer;
-    private Image ball;
+    private Image dot;
     private Image appleImage;
     private Image starImage;
     private Image head;
 
-    private Instant startTime;
-    private Instant endTime;
-    private int extraLife = 0;
+    private boolean moved = false;
+
+    private StatsBoard statsBoard;
 
     private ArrayList<Item> items = new ArrayList<Item>();
 
-    public Board(Instant startTime) {
-        this.startTime = startTime;
+    public Board(StatsBoard statsBoard) {
+        this.statsBoard = statsBoard;
         initBoard();
-    }
-
-    public int getDots() {
-        return dots;
-    }
-    
-    public void setDots(int dots) {
-        this.dots = dots;
-    }
-
-    public int getExtraLife() {
-        return extraLife;
-    }
-
-    public void setExtraLife(int extraLife) {
-        this.extraLife = extraLife;
-    }
-
-    public int getStarCollected() {
-        return starCollected;
-    }
-
-    public void setStarCollected(int starCollected) {
-        this.starCollected = starCollected;
     }
 
     private void initBoard() {
@@ -100,10 +74,15 @@ public class Board extends JPanel implements ActionListener {
         initGame();
     }
 
+    private void notifyStatsListener() {
+        if (statsBoard == null) return;
+        statsBoard.updateStats();
+    }
+
     private void loadImages() {
 
         ImageIcon iid = new ImageIcon("src/resources/dot.png");
-        ball = iid.getImage();
+        dot = iid.getImage();
 
         ImageIcon iia = new ImageIcon("src/resources/apple.png");
         appleImage = iia.getImage();
@@ -116,9 +95,7 @@ public class Board extends JPanel implements ActionListener {
 
     private void initGame() {
 
-        dots = 3;
-
-        for (int z = 0; z < dots; z++) {
+        for (int z = 0; z < statsBoard.getSnakeLength(); z++) {
             x[z] = 4 * DOT_SIZE - z * DOT_SIZE;
             y[z] = 2 * DOT_SIZE;
         }
@@ -137,18 +114,16 @@ public class Board extends JPanel implements ActionListener {
     }
     
     private void doDrawing(Graphics g) {
-        
         if (inGame) {
-
             for (Item item : items) {
                 item.draw(g, this);
             }
 
-            for (int z = 0; z < dots; z++) {
+            for (int z = 0; z < statsBoard.getSnakeLength(); z++) {
                 if (z == 0) {
                     g.drawImage(head, x[z], y[z], DOT_SIZE, DOT_SIZE, this);
                 } else {
-                    g.drawImage(ball, x[z], y[z], DOT_SIZE, DOT_SIZE, this);
+                    g.drawImage(dot, x[z], y[z], DOT_SIZE, DOT_SIZE, this);
                 }
             }
 
@@ -156,17 +131,17 @@ public class Board extends JPanel implements ActionListener {
 
         } else {
             gameOver(g);
-        }        
+        }
     }
 
     private void gameOver(Graphics g) {
-        Duration duration = Duration.between(startTime, endTime);
-        int appleCollected = dots - 3;
+        long duration = statsBoard.getGameTime();
+        int appleCollected = statsBoard.getAppleCollected();
         
         String msg1 = "Game Over";
-        String msg2 = "Duration: " + duration.toSeconds() + " seconds";
+        String msg2 = "Duration: " + duration + " seconds";
         String msg3 = "Apples Collected: " + appleCollected;
-        String msg4 = "Stars Collected: " + starCollected;
+        String msg4 = "Stars Collected: " + statsBoard.getStarCollected();
 
         Font small = new Font("Helvetica", Font.BOLD, 28);
         FontMetrics metr = getFontMetrics(small);
@@ -183,7 +158,7 @@ public class Board extends JPanel implements ActionListener {
         ArrayList<Item> removeItems = new ArrayList<>();
         for (Item item : items) {
             if ((x[0] == item.getX()) && (y[0] == item.getY())) {
-                item.itemEffect(this);
+                item.itemEffect(statsBoard.getGameStats());
                 removeItems.add(item);
             }
         }
@@ -191,15 +166,14 @@ public class Board extends JPanel implements ActionListener {
         for (Item item : removeItems) {
             item.locateItem(this);
         }
-        if (dots == introduceStar && !starIntroduced) {
+        if (statsBoard.getAppleCollected() == introduceStar && !starIntroduced) {
             locateItem(new StarFactory(starImage));
             starIntroduced = true;
         }
     }
 
     private void move() {
-
-        for (int z = dots; z > 0; z--) {
+        for (int z = statsBoard.getSnakeLength(); z > 0; z--) {
             x[z] = x[(z - 1)];
             y[z] = y[(z - 1)];
         }
@@ -222,12 +196,11 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void checkCollision() {
+        for (int z = statsBoard.getSnakeLength(); z > 0; z--) {
 
-        for (int z = dots; z > 0; z--) {
-
-            if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
-                if (extraLife >= 5) {
-                    extraLife = extraLife - 5;
+            if ((x[0] == x[z]) && (y[0] == y[z])) {
+                if (statsBoard.getExtraLife() >= 1) {
+                    statsBoard.decreaseExtraLife();
                 } else {
                     inGame = false;
                 }
@@ -251,8 +224,11 @@ public class Board extends JPanel implements ActionListener {
         }
         
         if (!inGame) {
-            endTime = Instant.now();
+            statsBoard.setEndTime(Instant.now());
             timer.stop();
+            if (statsBoard != null) {
+                statsBoard.dispose();
+            }
         }
     }
 
@@ -282,6 +258,8 @@ public class Board extends JPanel implements ActionListener {
             checkItem();
             checkCollision();
             move();
+            moved = false;
+            notifyStatsListener();
         }
 
         repaint();
@@ -291,6 +269,9 @@ public class Board extends JPanel implements ActionListener {
 
         @Override
         public void keyPressed(KeyEvent e) {
+            if (moved) {
+                return;
+            }
 
             int key = e.getKeyCode();
 
@@ -317,6 +298,7 @@ public class Board extends JPanel implements ActionListener {
                 rightDirection = false;
                 leftDirection = false;
             }
+            moved = true;
         }
     }
 }

@@ -3,9 +3,14 @@ package com.zetcode;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
+import com.zetcode.StatsBoard.GameStats;
+import com.zetcode.StatsBoard.StatsBoard;
+
 import java.time.Instant;
 
 public class Snake extends JFrame {
+
+    private GameStats gameStats;
 
     public Snake() {
         
@@ -15,8 +20,12 @@ public class Snake extends JFrame {
     private void initUI() {
 
         Instant startTime = Instant.now();
+
+        gameStats = new GameStats(startTime);
+        StatsBoard statsBoard = new StatsBoard(gameStats);
+        Board board = new Board(statsBoard);
         
-        add(new Board(startTime));
+        add(board);
                
         setResizable(false);
         pack();
@@ -24,6 +33,12 @@ public class Snake extends JFrame {
         setTitle("Snake");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        statsBoard.setLocation(
+            getX() + getWidth() + 10,
+            getY()
+        );
+        statsBoard.setVisible(true);
     }
     
 

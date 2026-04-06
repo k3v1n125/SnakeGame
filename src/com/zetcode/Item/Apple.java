@@ -5,6 +5,7 @@ import java.time.Instant;
 
 import com.zetcode.Board;
 import com.zetcode.ItemFactory.AppleFactory;
+import com.zetcode.StatsBoard.GameStats;
 
 public class Apple extends Item {
     private AppleFactory factory;
@@ -20,7 +21,8 @@ public class Apple extends Item {
     }
 
     @Override
-    public void itemEffect(Board board) {
-        board.setDots(board.getDots() + 1);
+    public void itemEffect(GameStats gameStats) {
+        gameStats.increaseSnakeLength();
+        gameStats.increaseApplesCollected();
     }
 }
