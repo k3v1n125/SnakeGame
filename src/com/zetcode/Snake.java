@@ -10,7 +10,7 @@ import java.time.Instant;
 
 public class Snake extends JFrame {
 
-    private GameStats gameStats;
+    // private GameStats gameStats;
 
     public Snake() {
         
@@ -21,9 +21,9 @@ public class Snake extends JFrame {
 
         Instant startTime = Instant.now();
 
-        gameStats = new GameStats(startTime);
+        GameStats gameStats = new GameStats(startTime);
         StatsBoard statsBoard = new StatsBoard(gameStats);
-        Board board = new Board(statsBoard);
+        Board board = new Board(this, statsBoard);
         
         add(board);
                
@@ -39,6 +39,18 @@ public class Snake extends JFrame {
             getY()
         );
         statsBoard.setVisible(true);
+    }
+
+    public void restart() {
+        dispose();
+        EventQueue.invokeLater(() -> {
+            JFrame ex = new Snake();
+            ex.setVisible(true);
+        });
+    }
+
+    public void end() {
+        dispose();
     }
     
 

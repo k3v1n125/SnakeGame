@@ -2,6 +2,7 @@ package com.zetcode.Item;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.Duration;
 import java.time.Instant;
 
 import com.zetcode.Board;
@@ -13,6 +14,7 @@ public abstract class Item {
     private int x;
     private int y;
     private Instant placedTime;
+    private Duration pauseDuration = Duration.ZERO;
     
     public Item(Image image, int x, int y, Instant placedTime) {
         this.image = image;
@@ -37,6 +39,15 @@ public abstract class Item {
         return placedTime;
     }
 
+    public Duration existDuration() {
+        return Duration.between(placedTime, Instant.now()).minus(pauseDuration);
+    }
+
+    public void setPauseDuration(Duration pauseDuration) {
+        this.pauseDuration = this.pauseDuration.plus(pauseDuration);
+    }
+
     public abstract void locateItem(Board board);
     public abstract void itemEffect(GameStats gameStats);
+    public abstract Duration getExpireDuration();
 }

@@ -17,14 +17,15 @@ java -cp src com.zetcode.Snake
 
 ## Modification
 
-### Content
+### Table of Content
 
 [Modification #1](#1-a-stopwatch-for-the-game-shows-the-time-the-snake-survive-when-game-over) <br>
 [Modification #2](#2-make-apple-into-a-java-class-implementing-item-interface) <br>
 [Modification #3](#3-score-calculated--shown-when-game-over) <br>
 [Modification #4](#4-time-limit-for-apple) <br>
 [Modification #5](#5-new-star-item) <br>
-[Modification #6](#6-stats-board--bug-fix)
+[Modification #6](#6-stats-board--bug-fix) <br>
+[Modification #7](#7-game-pause--restart)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
@@ -101,4 +102,8 @@ Add a stats borad next to snake window to show current snake's stats <br>
 Move all the stats (applesColledted, snakeLength, etc) into GameStats class <br>
 Bug fix: add a ```moved``` boolean in Board class to avoid reversing into itself when two keys are press at the same time
 
-### Expected next modifications: pause, goals, restart, new feature for specific amount of stars.
+### 7. Game pause & restart
+When space is pressed, the entire game would pause <br>
+When esc is pressed, the entire program would exit
+
+### Expected next modifications: goals, new feature for specific amount of stars.

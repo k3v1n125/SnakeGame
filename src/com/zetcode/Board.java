@@ -53,12 +53,15 @@ public class Board extends JPanel implements ActionListener {
     private Image head;
 
     private boolean moved = false;
+    private boolean paused = false;
 
+    private Snake snake;
     private StatsBoard statsBoard;
 
     private ArrayList<Item> items = new ArrayList<Item>();
 
-    public Board(StatsBoard statsBoard) {
+    public Board(Snake snake, StatsBoard statsBoard) {
+        this.snake = snake;
         this.statsBoard = statsBoard;
         initBoard();
     }
@@ -115,6 +118,15 @@ public class Board extends JPanel implements ActionListener {
     
     private void doDrawing(Graphics g) {
         if (inGame) {
+            if (paused) {
+                String msg = "PAUSED";
+                Font font = new Font("Helvetica", Font.BOLD, 14);
+                FontMetrics metr = getFontMetrics(font);
+                g.setColor(Color.WHITE);
+                g.setFont(font);
+                g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
+            }
+
             for (Item item : items) {
                 item.draw(g, this);
             }
@@ -128,7 +140,6 @@ public class Board extends JPanel implements ActionListener {
             }
 
             Toolkit.getDefaultToolkit().sync();
-
         } else {
             gameOver(g);
         }
@@ -140,18 +151,21 @@ public class Board extends JPanel implements ActionListener {
         
         String msg1 = "Game Over";
         String msg2 = "Duration: " + duration + " seconds";
-        String msg3 = "Apples Collected: " + appleCollected;
-        String msg4 = "Stars Collected: " + statsBoard.getStarCollected();
+        String msg3 = "Apples collected: " + appleCollected;
+        String msg4 = "Stars collected: " + statsBoard.getStarCollected();
+        String msg5 = "Click shift to restart or esc to exit";
 
         Font small = new Font("Helvetica", Font.BOLD, 28);
         FontMetrics metr = getFontMetrics(small);
 
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString(msg1, (B_WIDTH - metr.stringWidth(msg1)) / 2, B_HEIGHT / 2 - 42);
-        g.drawString(msg2, (B_WIDTH - metr.stringWidth(msg2)) / 2, B_HEIGHT / 2 - 14);
-        g.drawString(msg3, (B_WIDTH - metr.stringWidth(msg3)) / 2, B_HEIGHT / 2 + 14);
-        g.drawString(msg4, (B_WIDTH - metr.stringWidth(msg4)) / 2, B_HEIGHT / 2 + 42);
+        g.drawString(msg1, (B_WIDTH - metr.stringWidth(msg1)) / 2, B_HEIGHT / 2 - 56);
+        g.drawLine(50, B_HEIGHT / 2 - 52, B_WIDTH - 50, B_HEIGHT / 2 - 52);
+        g.drawString(msg2, (B_WIDTH - metr.stringWidth(msg2)) / 2, B_HEIGHT / 2 - 28);
+        g.drawString(msg3, (B_WIDTH - metr.stringWidth(msg3)) / 2, B_HEIGHT / 2);
+        g.drawString(msg4, (B_WIDTH - metr.stringWidth(msg4)) / 2, B_HEIGHT / 2 + 28);
+        g.drawString(msg5, (B_WIDTH - metr.stringWidth(msg5)) / 2, B_HEIGHT / 2 + 56);
     }
 
     private void checkItem() {
@@ -224,7 +238,6 @@ public class Board extends JPanel implements ActionListener {
         }
         
         if (!inGame) {
-            statsBoard.setEndTime(Instant.now());
             timer.stop();
             if (statsBoard != null) {
                 statsBoard.dispose();
@@ -245,9 +258,9 @@ public class Board extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         ArrayList<Item> removeItems = new ArrayList<Item>();
 
-        if (inGame) {
+        if (inGame && !paused) {
             for (Item item : items) {
-                if (Duration.between(item.getPlacedTime(), Instant.now()).getSeconds() >= 5) {
+                if (item.existDuration().getSeconds() >= item.getExpireDuration().toSeconds()) {
                     removeItems.add(item);
                 }
             }
@@ -269,11 +282,34 @@ public class Board extends JPanel implements ActionListener {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if (moved) {
+            int key = e.getKeyCode();
+            if (key == KeyEvent.VK_SHIFT) {
+                snake.restart();
                 return;
             }
 
-            int key = e.getKeyCode();
+            if (key == KeyEvent.VK_ESCAPE) {
+                System.exit(0);
+                return;
+            }
+
+
+            if (key == KeyEvent.VK_SPACE) {
+                paused = !paused;
+                if (paused) {
+                    statsBoard.pause();
+                } else {
+                    Duration pauseDuration = statsBoard.resume();
+                    for (Item item : items) {
+                        item.setPauseDuration(pauseDuration);
+                    }
+                }
+                return;
+            }
+
+            if (moved) {
+                return;
+            }
 
             if ((key == KeyEvent.VK_LEFT) && (!rightDirection)) {
                 leftDirection = true;

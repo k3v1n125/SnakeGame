@@ -27,8 +27,11 @@ public class GameStats extends JPanel {
     private int extraLifeUsed = 0;
 
     private Instant startTime;
-    private Instant endTime;
     private long gameTime;
+
+    private Instant pauseTime = null;
+    private Duration pausedDuration = Duration.ZERO;
+    private Duration totalPausedDuration = Duration.ZERO;
 
     public GameStats(Instant startTime) {
         this.startTime = startTime;
@@ -42,11 +45,7 @@ public class GameStats extends JPanel {
     }
 
     public long getGameTime() {
-        return Duration.between(startTime, Instant.now()).toSeconds();
-    }
-
-    public long getFinalGameTime() {
-        return Duration.between(startTime, endTime).toSeconds();
+        return gameTime;
     }
 
     public int getSnakeLength() {
@@ -85,13 +84,23 @@ public class GameStats extends JPanel {
         this.gameTime = gameTime;
     }
 
-    public void setEndTime(Instant endTime) {
-        this.endTime = endTime;
+    public void pause(Instant pauseTime) {
+        this.pauseTime = pauseTime;
+    }
+
+    public Duration getPausedDuration() {
+        return pausedDuration;
+    }
+
+    public void resume(Instant resumeTime) {
+        pausedDuration = Duration.between(pauseTime, resumeTime);
+        totalPausedDuration = totalPausedDuration.plus(pausedDuration);
     }
 
     public void updateStats() {
         extraLife = (starCollected / 5) - extraLifeUsed;
-        gameTime = Duration.between(startTime, Instant.now()).toSeconds();
+        Duration gameDuration = Duration.between(startTime, Instant.now()).minus(totalPausedDuration);
+        gameTime = gameDuration.toSeconds();
         repaint();
     }
 

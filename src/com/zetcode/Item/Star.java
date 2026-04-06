@@ -1,6 +1,7 @@
 package com.zetcode.Item;
 
 import java.awt.Image;
+import java.time.Duration;
 import java.time.Instant;
 
 import com.zetcode.Board;
@@ -9,10 +10,16 @@ import com.zetcode.StatsBoard.GameStats;
 
 public class Star extends Item {
     private StarFactory factory;
+    private Duration expireDuration = Duration.ofSeconds(5);
 
     public Star(Image image, int x, int y, Instant applePlacedTime) {
         super(image, x, y, applePlacedTime);
         factory = new StarFactory(image);
+    }
+
+    @Override
+    public Duration getExpireDuration() {
+        return expireDuration;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.zetcode.StatsBoard;
 
+import java.time.Duration;
 import java.time.Instant;
 
 import javax.swing.*;
@@ -26,6 +27,15 @@ public class StatsBoard extends JFrame implements GameStatsListener {
         return gameStats.getSnakeLength();
     }
 
+    public void pause() {
+        gameStats.pause(Instant.now());
+    }
+
+    public Duration resume() {
+        gameStats.resume(Instant.now());
+        return gameStats.getPausedDuration();
+    }
+
     public long getGameTime() {
         return gameStats.getGameTime();
     }
@@ -44,10 +54,6 @@ public class StatsBoard extends JFrame implements GameStatsListener {
 
     public void decreaseExtraLife() {
         gameStats.decreaseExtraLife();
-    }
-
-    public void setEndTime(Instant endTime) {
-        gameStats.setEndTime(endTime);
     }
 
     @Override
