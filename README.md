@@ -100,3 +100,5 @@ Items are now created by ItemFactory.java
 Add a stats borad next to snake window to show current snake's stats <br>
 Move all the stats (applesColledted, snakeLength, etc) into GameStats class <br>
 Bug fix: add a ```moved``` boolean in Board class to avoid reversing into itself when two keys are press at the same time
+
+### Expected next modifications: pause, goals, restart, new feature for specific amount of stars.
