@@ -55,6 +55,8 @@ public class Board extends JPanel implements ActionListener {
     private boolean moved = false;
     private boolean paused = false;
 
+    private int newAppleIntroduced = 0;
+
     private Snake snake;
     private StatsBoard statsBoard;
 
@@ -118,15 +120,6 @@ public class Board extends JPanel implements ActionListener {
     
     private void doDrawing(Graphics g) {
         if (inGame) {
-            if (paused) {
-                String msg = "PAUSED";
-                Font font = new Font("Helvetica", Font.BOLD, 14);
-                FontMetrics metr = getFontMetrics(font);
-                g.setColor(Color.WHITE);
-                g.setFont(font);
-                g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
-            }
-
             for (Item item : items) {
                 item.draw(g, this);
             }
@@ -139,6 +132,15 @@ public class Board extends JPanel implements ActionListener {
                 }
             }
 
+            if (paused) {
+                String msg = "PAUSED";
+                Font font = new Font("Helvetica", Font.BOLD, 50);
+                FontMetrics metr = getFontMetrics(font);
+                g.setColor(Color.WHITE);
+                g.setFont(font);
+                g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
+            }
+
             Toolkit.getDefaultToolkit().sync();
         } else {
             gameOver(g);
@@ -147,12 +149,19 @@ public class Board extends JPanel implements ActionListener {
 
     private void gameOver(Graphics g) {
         long duration = statsBoard.getGameTime();
+        long gameMinutes = duration / 60;
+        long gameSeconds = duration % 60;
+        String durationMsg = gameSeconds + "s";
+        if (gameMinutes >= 1) {
+            durationMsg = gameMinutes + "m " + gameSeconds + "s";
+        }
         int appleCollected = statsBoard.getAppleCollected();
+        int starCollected = statsBoard.getStarCollected();
         
         String msg1 = "Game Over";
-        String msg2 = "Duration: " + duration + " seconds";
+        String msg2 = "Duration: " + durationMsg;
         String msg3 = "Apples collected: " + appleCollected;
-        String msg4 = "Stars collected: " + statsBoard.getStarCollected();
+        String msg4 = "Stars collected: " + starCollected;
         String msg5 = "Click shift to restart or esc to exit";
 
         Font small = new Font("Helvetica", Font.BOLD, 28);
@@ -183,6 +192,13 @@ public class Board extends JPanel implements ActionListener {
         if (statsBoard.getAppleCollected() == introduceStar && !starIntroduced) {
             locateItem(new StarFactory(starImage));
             starIntroduced = true;
+        }
+        if (statsBoard.getStarCollected() % 5 == 0 && statsBoard.getStarCollected() > newAppleIntroduced) {
+            locateItem(new AppleFactory(appleImage));
+            newAppleIntroduced = statsBoard.getStarCollected();
+            if (newAppleIntroduced == 30) {
+                newAppleIntroduced = Integer.MAX_VALUE;
+            }
         }
     }
 
@@ -311,25 +327,25 @@ public class Board extends JPanel implements ActionListener {
                 return;
             }
 
-            if ((key == KeyEvent.VK_LEFT) && (!rightDirection)) {
+            if ((key == KeyEvent.VK_LEFT) && (!rightDirection) && !leftDirection) {
                 leftDirection = true;
                 upDirection = false;
                 downDirection = false;
             }
 
-            if ((key == KeyEvent.VK_RIGHT) && (!leftDirection)) {
+            if ((key == KeyEvent.VK_RIGHT) && (!leftDirection) && !rightDirection) {
                 rightDirection = true;
                 upDirection = false;
                 downDirection = false;
             }
 
-            if ((key == KeyEvent.VK_UP) && (!downDirection)) {
+            if ((key == KeyEvent.VK_UP) && (!downDirection) && !upDirection) {
                 upDirection = true;
                 rightDirection = false;
                 leftDirection = false;
             }
 
-            if ((key == KeyEvent.VK_DOWN) && (!upDirection)) {
+            if ((key == KeyEvent.VK_DOWN) && (!upDirection) && !downDirection) {
                 downDirection = true;
                 rightDirection = false;
                 leftDirection = false;

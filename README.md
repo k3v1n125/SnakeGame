@@ -29,7 +29,8 @@ gradlew.bat run
 [Modification #4](#4-time-limit-for-apple) <br>
 [Modification #5](#5-new-star-item) <br>
 [Modification #6](#6-stats-board--bug-fix) <br>
-[Modification #7](#7-game-pause--restart)
+[Modification #7](#7-game-pause--restart) <br>
+[Modification #8](#8-more-apples--formatted-game-time)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
@@ -104,10 +105,15 @@ Items are now created by ItemFactory.java
 ### 6. Stats board & bug fix
 Add a stats borad next to snake window to show current snake's stats <br>
 Move all the stats (applesColledted, snakeLength, etc) into GameStats class <br>
+StartTime is now recorded here <br>
 Bug fix: add a ```moved``` boolean in Board class to avoid reversing into itself when two keys are press at the same time
 
 ### 7. Game pause & restart
 When space is pressed, the entire game would pause <br>
 When esc is pressed, the entire program would exit
 
-### Expected next modifications: goals, new feature for specific amount of stars.
+### 8. More apples & formatted game time
+For each 5 stars collected, there will be a new apple (at most 6 new apples) <br>
+When game over, the time would be shown in minutes and seconds if game is more than 60 seconds
+
+### Expected next modifications: goals, new feature

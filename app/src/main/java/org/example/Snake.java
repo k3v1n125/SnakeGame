@@ -9,9 +9,7 @@ import org.example.StatsBoard.StatsBoard;
 import java.time.Instant;
 
 public class Snake extends JFrame {
-
-    // private GameStats gameStats;
-
+    
     public Snake() {
         
         initUI();
@@ -48,13 +46,4 @@ public class Snake extends JFrame {
             ex.setVisible(true);
         });
     }
-    
-
-    // public static void main(String[] args) {
-        
-    //     EventQueue.invokeLater(() -> {
-    //         JFrame ex = new Snake();
-    //         ex.setVisible(true);
-    //     });
-    // }
 }

@@ -8,14 +8,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
-    public static void main(String[] args) {
+    public void startGame() {
         EventQueue.invokeLater(() -> {
             JFrame ex = new Snake();
             ex.setVisible(true);
         });
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        app.startGame();
     }
 }
