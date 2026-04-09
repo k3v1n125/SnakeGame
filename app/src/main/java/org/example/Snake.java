@@ -1,10 +1,10 @@
-package com.zetcode;
+package org.example;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
-import com.zetcode.StatsBoard.GameStats;
-import com.zetcode.StatsBoard.StatsBoard;
+import org.example.StatsBoard.GameStats;
+import org.example.StatsBoard.StatsBoard;
 
 import java.time.Instant;
 
@@ -48,17 +48,13 @@ public class Snake extends JFrame {
             ex.setVisible(true);
         });
     }
-
-    public void end() {
-        dispose();
-    }
     
 
-    public static void main(String[] args) {
+    // public static void main(String[] args) {
         
-        EventQueue.invokeLater(() -> {
-            JFrame ex = new Snake();
-            ex.setVisible(true);
-        });
-    }
+    //     EventQueue.invokeLater(() -> {
+    //         JFrame ex = new Snake();
+    //         ex.setVisible(true);
+    //     });
+    // }
 }

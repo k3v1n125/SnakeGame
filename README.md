@@ -8,12 +8,16 @@ Modifications and additional features have been added in this project.
 
 ## Running this program
 Make sure you have java installed, then move to SnakeGame directory and run:
+
+For MacOS/Linux
 ```bash
-javac -cp src src/com/zetcode/*.java src/com/zetcode/Item/*.java src/com/zetcode/StatsBoard/*.java src/com/zetcode/ItemFactory/*.java
+./gradlew run
 ```
+For Windows
 ```bash
-java -cp src com.zetcode.Snake
+gradlew.bat run
 ```
+
 
 ## Modification
 

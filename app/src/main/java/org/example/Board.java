@@ -1,4 +1,4 @@
-package com.zetcode;
+package org.example;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,11 +15,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import com.zetcode.Item.Item;
-import com.zetcode.ItemFactory.AppleFactory;
-import com.zetcode.ItemFactory.ItemFactory;
-import com.zetcode.ItemFactory.StarFactory;
-import com.zetcode.StatsBoard.StatsBoard;
+import org.example.Item.Item;
+import org.example.ItemFactory.AppleFactory;
+import org.example.ItemFactory.ItemFactory;
+import org.example.ItemFactory.StarFactory;
+import org.example.StatsBoard.StatsBoard;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -84,15 +84,15 @@ public class Board extends JPanel implements ActionListener {
 
     private void loadImages() {
 
-        ImageIcon iid = new ImageIcon("src/resources/dot.png");
+        ImageIcon iid = new ImageIcon(getClass().getResource("/dot.png"));
         dot = iid.getImage();
 
-        ImageIcon iia = new ImageIcon("src/resources/apple.png");
+        ImageIcon iia = new ImageIcon(getClass().getResource("/apple.png"));
         appleImage = iia.getImage();
-        ImageIcon iis = new ImageIcon("src/resources/star.png");
+        ImageIcon iis = new ImageIcon(getClass().getResource("/star.png"));
         starImage = iis.getImage();
 
-        ImageIcon iih = new ImageIcon("src/resources/head.png");
+        ImageIcon iih = new ImageIcon(getClass().getResource("/head.png"));
         head = iih.getImage();
     }
 

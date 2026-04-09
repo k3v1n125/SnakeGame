@@ -1,8 +1,8 @@
-package com.zetcode.ItemFactory;
+package org.example.ItemFactory;
 
 import java.time.Instant;
 
-import com.zetcode.Item.Item;
+import org.example.Item.Item;
 
 public interface ItemFactory {
     Item create(int x, int y, Instant placedTime);

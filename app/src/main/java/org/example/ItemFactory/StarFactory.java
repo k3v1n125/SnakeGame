@@ -1,10 +1,10 @@
-package com.zetcode.ItemFactory;
+package org.example.ItemFactory;
 
 import java.awt.Image;
 import java.time.Instant;
 
-import com.zetcode.Item.Star;
-import com.zetcode.Item.Item;
+import org.example.Item.Star;
+import org.example.Item.Item;
 
 public class StarFactory implements ItemFactory {
     private final Image image;

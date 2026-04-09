@@ -1,4 +1,8 @@
-src/com/zetcode/*.class
-src/com/zetcode/Item/*.class
-src/com/zetcode/ItemFactory/*.class
-src/com/zetcode/StatsBoard/*.class
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+# Ignore Kotlin plugin data
+.kotlin

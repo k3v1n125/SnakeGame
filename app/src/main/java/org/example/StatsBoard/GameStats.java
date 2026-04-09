@@ -1,4 +1,4 @@
-package com.zetcode.StatsBoard;
+package org.example.StatsBoard;
 
 import java.awt.Color;
 import java.awt.Dimension;

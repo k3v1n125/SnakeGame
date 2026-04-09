@@ -1,12 +1,12 @@
-package com.zetcode.Item;
+package org.example.Item;
 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.time.Duration;
 import java.time.Instant;
 
-import com.zetcode.Board;
-import com.zetcode.StatsBoard.GameStats;
+import org.example.Board;
+import org.example.StatsBoard.GameStats;
 
 public abstract class Item {
     private final int DOT_SIZE = 20;

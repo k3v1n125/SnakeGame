@@ -1,10 +1,10 @@
-package com.zetcode.ItemFactory;
+package org.example.ItemFactory;
 
 import java.awt.Image;
 import java.time.Instant;
 
-import com.zetcode.Item.Apple;
-import com.zetcode.Item.Item;
+import org.example.Item.Apple;
+import org.example.Item.Item;
 
 public class AppleFactory implements ItemFactory {
     private final Image image;

@@ -1,20 +1,20 @@
-package com.zetcode.Item;
+package org.example.Item;
 
 import java.awt.Image;
 import java.time.Duration;
 import java.time.Instant;
 
-import com.zetcode.Board;
-import com.zetcode.ItemFactory.StarFactory;
-import com.zetcode.StatsBoard.GameStats;
+import org.example.Board;
+import org.example.ItemFactory.AppleFactory;
+import org.example.StatsBoard.GameStats;
 
-public class Star extends Item {
-    private StarFactory factory;
+public class Apple extends Item {
+    private AppleFactory factory;
     private Duration expireDuration = Duration.ofSeconds(5);
 
-    public Star(Image image, int x, int y, Instant applePlacedTime) {
+    public Apple(Image image, int x, int y, Instant applePlacedTime) {
         super(image, x, y, applePlacedTime);
-        factory = new StarFactory(image);
+        factory = new AppleFactory(image);
     }
 
     @Override
@@ -26,9 +26,10 @@ public class Star extends Item {
     public void locateItem(Board board) {
         board.locateItem(factory);
     }
-    
+
     @Override
     public void itemEffect(GameStats gameStats) {
-        gameStats.increaseStarCollected();
+        gameStats.increaseSnakeLength();
+        gameStats.increaseApplesCollected();
     }
 }
