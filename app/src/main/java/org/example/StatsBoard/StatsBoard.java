@@ -56,6 +56,18 @@ public class StatsBoard extends JFrame implements GameStatsListener {
         gameStats.decreaseExtraLife();
     }
 
+    public void appleMissed() {
+        gameStats.appleMissed();
+    }
+
+    public void checkStats() {
+        gameStats.checkStats();
+    }
+
+    public void checkHighScore() {
+        gameStats.checkHighScore();
+    }
+
     @Override
     public void updateStats() {
         SwingUtilities.invokeLater(() -> {

@@ -10,9 +10,13 @@ import java.time.Instant;
 
 import javax.swing.JPanel;
 
+import org.example.Achievement.AchievementManager;
+import org.example.HighScore.HighScore;
+import org.example.HighScore.HighScoreManager;
+
 public class GameStats extends JPanel {
     private static final int WIDTH  = 220;
-    private static final int HEIGHT = 160;
+    private static final int HEIGHT = 250;
     private static final int LINE_HEIGHT = 25;
     private static final int START_Y = 50;
     private static final int LABEL_X = 15;
@@ -33,13 +37,22 @@ public class GameStats extends JPanel {
     private Duration pausedDuration = Duration.ZERO;
     private Duration totalPausedDuration = Duration.ZERO;
 
-    public GameStats(Instant startTime) {
+    private long fastestAppleTime = Long.MAX_VALUE;
+    private long fastestStarTime = Long.MAX_VALUE;
+
+    private AchievementManager achievementManager;
+    private HighScoreManager highScoreManager;
+
+
+    public GameStats(Instant startTime, AchievementManager achievementManager, HighScoreManager highScoreManager) {
         this.startTime = startTime;
         this.snakeLength = 3;
         this.applesCollected = 0;
         this.starCollected = 0;
         this.extraLife = 0;
         this.gameTime = 0;
+        this.achievementManager = achievementManager;
+        this.highScoreManager = highScoreManager;
         setBackground(Color.BLACK);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
     }
@@ -74,10 +87,37 @@ public class GameStats extends JPanel {
 
     public void increaseApplesCollected() {
         applesCollected = applesCollected + 1;
+        Duration time = Duration.between(startTime, Instant.now());
+        achievementManager.onAppleCollected(time.toSeconds());
     }
 
     public void increaseStarCollected() {
         starCollected = starCollected + 1;
+    }
+
+    public void setFastestAppleCollected(long collectTime) {
+        if (collectTime < fastestAppleTime) {
+            fastestAppleTime = collectTime;
+        }
+    }
+
+    public void checkStats() {
+        long time = Duration.between(startTime, Instant.now()).toSeconds();
+        achievementManager.checkStats(applesCollected, snakeLength, time);
+    }
+
+    public void checkHighScore() {
+        highScoreManager.update(applesCollected, snakeLength, gameTime, fastestAppleTime);
+    }
+
+    public void setFastestStarCollected(long collectTime) {
+        if (collectTime < fastestStarTime) {
+            fastestStarTime = collectTime;
+        }
+    }
+
+    public void appleMissed() {
+        achievementManager.onAppleMissed();
     }
 
     public void setGameTime(long gameTime) {
@@ -147,6 +187,19 @@ public class GameStats extends JPanel {
         if (applesCollected < 4) {
             g.setColor(Color.YELLOW);
             g.drawString(STAR_NOT_UNLOCK, LABEL_X, START_Y + lines * LINE_HEIGHT);
+            lines = lines + 1;
         }
+
+        // High score section
+        int y = START_Y + lines * LINE_HEIGHT;
+        g.setColor(Color.YELLOW);
+        g.drawString("── Best ──", LABEL_X, y);
+
+        HighScore hs = highScoreManager.getRecord();
+
+        g.setColor(Color.LIGHT_GRAY);
+        g.drawString("Best Apples:",   LABEL_X, y += LINE_HEIGHT);
+        g.setColor(Color.GREEN);
+        g.drawString(String.valueOf(hs.bestApples), VALUE_X, y);
     }
 }

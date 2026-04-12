@@ -11,6 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -20,10 +24,6 @@ import org.example.ItemFactory.AppleFactory;
 import org.example.ItemFactory.ItemFactory;
 import org.example.ItemFactory.StarFactory;
 import org.example.StatsBoard.StatsBoard;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
 
 public class Board extends JPanel implements ActionListener {
 
@@ -256,6 +256,7 @@ public class Board extends JPanel implements ActionListener {
         if (!inGame) {
             timer.stop();
             if (statsBoard != null) {
+                statsBoard.checkHighScore();
                 statsBoard.dispose();
             }
         }
@@ -278,6 +279,7 @@ public class Board extends JPanel implements ActionListener {
             for (Item item : items) {
                 if (item.existDuration().getSeconds() >= item.getExpireDuration().toSeconds()) {
                     removeItems.add(item);
+                    statsBoard.appleMissed();
                 }
             }
             items.removeAll(removeItems);
@@ -288,6 +290,7 @@ public class Board extends JPanel implements ActionListener {
             checkCollision();
             move();
             moved = false;
+            statsBoard.checkStats();
             notifyStatsListener();
         }
 

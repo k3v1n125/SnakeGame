@@ -30,5 +30,7 @@ public class Star extends Item {
     @Override
     public void itemEffect(GameStats gameStats) {
         gameStats.increaseStarCollected();
+        Duration collectTime = Duration.between(getPlacedTime(), Instant.now());
+        gameStats.setFastestStarCollected(collectTime.toSeconds());
     }
 }

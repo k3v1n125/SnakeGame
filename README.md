@@ -17,6 +17,9 @@ For Windows
 ```bash
 gradlew.bat run
 ```
+For Android <br>
+Download and install the apk <br>
+The achievements feature is not in the apk version yet
 
 
 ## Modification
@@ -30,7 +33,8 @@ gradlew.bat run
 [Modification #5](#5-new-star-item) <br>
 [Modification #6](#6-stats-board--bug-fix) <br>
 [Modification #7](#7-game-pause--restart) <br>
-[Modification #8](#8-more-apples--formatted-game-time)
+[Modification #8](#8-more-apples--formatted-game-time) <br>
+[Modification #9](#9-achievement--highscore)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
@@ -116,4 +120,9 @@ When esc is pressed, the entire program would exit
 For each 5 stars collected, there will be a new apple (at most 6 new apples) <br>
 When game over, the time would be shown in minutes and seconds if game is more than 60 seconds
 
-### Expected next modifications: goals, new feature
+### 9. Achievement & highscore
+This program now has two new feature, achievement and highscore <br>
+Currently, only length and stats related to apple would be recorded <br>
+Next modification will aim on recording and giving achievement for stars and
+
+### Expected next modifications: new feature

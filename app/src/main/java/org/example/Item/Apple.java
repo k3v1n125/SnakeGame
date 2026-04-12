@@ -31,5 +31,7 @@ public class Apple extends Item {
     public void itemEffect(GameStats gameStats) {
         gameStats.increaseSnakeLength();
         gameStats.increaseApplesCollected();
+        Duration collectTime = Duration.between(getPlacedTime(), Instant.now());
+        gameStats.setFastestAppleCollected(collectTime.toSeconds());
     }
 }

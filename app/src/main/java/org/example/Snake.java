@@ -3,6 +3,9 @@ package org.example;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
+import org.example.Achievement.AchievementBoard;
+import org.example.Achievement.AchievementManager;
+import org.example.HighScore.HighScoreManager;
 import org.example.StatsBoard.GameStats;
 import org.example.StatsBoard.StatsBoard;
 
@@ -19,12 +22,17 @@ public class Snake extends JFrame {
 
         Instant startTime = Instant.now();
 
-        GameStats gameStats = new GameStats(startTime);
+        HighScoreManager highScoreManager = new HighScoreManager();
+        AchievementManager achievementManager = new AchievementManager();
+
+        GameStats gameStats = new GameStats(startTime, achievementManager, highScoreManager);
         StatsBoard statsBoard = new StatsBoard(gameStats);
+        AchievementBoard achievementBoard = new AchievementBoard(achievementManager);
         Board board = new Board(this, statsBoard);
+
+        achievementManager.setListener(achievementBoard);
         
         add(board);
-               
         setResizable(false);
         pack();
         
@@ -37,6 +45,12 @@ public class Snake extends JFrame {
             getY()
         );
         statsBoard.setVisible(true);
+
+        achievementBoard.setLocation(
+            getX() + getWidth() + 10,
+            statsBoard.getY() + statsBoard.getHeight() + 10
+        );
+        achievementBoard.setVisible(true);
     }
 
     public void restart() {
