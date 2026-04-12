@@ -125,4 +125,4 @@ This program now has two new feature, achievement and highscore <br>
 Currently, only length and stats related to apple would be recorded <br>
 Next modification will aim on recording and giving achievement for stars and
 
-### Expected next modifications: new feature
+### Expected next modifications: new feature, new achievements
