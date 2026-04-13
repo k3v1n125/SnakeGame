@@ -20,6 +20,14 @@ public class HighScore {
         this.bestApples = bestApples;
     }
 
+    public boolean setBestApples(int bestApples, boolean beaten) {
+        if (bestApples > this.bestApples) {
+            setBestApples(bestApples);
+            beaten = true;
+        }
+        return beaten;
+    }
+
     public int getBestApples() {
         return bestApples;
     }
@@ -32,11 +40,27 @@ public class HighScore {
         this.bestSurvivalSeconds = bestSurvivalSeconds;
     }
 
+    public boolean setBestSurvivalSeconds(long bestSurvivalSeconds, boolean beaten) {
+        if (bestSurvivalSeconds > this.bestSurvivalSeconds) {
+            setBestSurvivalSeconds(bestSurvivalSeconds);
+            beaten = true;
+        }
+        return beaten;
+    }
+
     public long getFastestAppleSeconds() {
         return fastestAppleSeconds;
     }
 
     public void setFastestAppleSeconds(long fastestAppleSeconds) {
         this.fastestAppleSeconds = fastestAppleSeconds;
+    }
+
+    public boolean setFastestAppleSeconds(long fastestAppleSeconds, boolean beaten) {
+        if (fastestAppleSeconds < this.fastestAppleSeconds) {
+            setFastestAppleSeconds(fastestAppleSeconds);
+            beaten = true;
+        }
+        return beaten;
     }
 }

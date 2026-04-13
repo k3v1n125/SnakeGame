@@ -18,19 +18,12 @@ public class HighScoreManager {
     public boolean update(int apples,
                           long survivalSeconds, long fastestApple) {
         boolean beaten = false;
-        if (apples > record.getBestApples()) {
-            record.setBestApples(apples);
-            beaten = true;
+        beaten = record.setBestApples(apples, beaten);
+        beaten = record.setBestSurvivalSeconds(survivalSeconds, beaten);
+        beaten = record.setFastestAppleSeconds(fastestApple, beaten);
+        if (beaten) {
+            save();
         }
-        if (survivalSeconds > record.getBestSurvivalSeconds()) {
-            record.setBestSurvivalSeconds(survivalSeconds);
-            beaten = true;
-        }
-        if (fastestApple > 0 && fastestApple < record.getFastestAppleSeconds()) {
-            record.setFastestAppleSeconds(fastestApple);
-            beaten = true;
-        }
-        if (beaten) save();
         return beaten;
     }
 
