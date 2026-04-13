@@ -41,14 +41,14 @@ public class Snake extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         statsBoard.setLocation(
-            getX() + getWidth() + 10,
+            getX() + getWidth(),
             getY()
         );
         statsBoard.setVisible(true);
 
         achievementBoard.setLocation(
-            getX() + getWidth() + 10,
-            statsBoard.getY() + statsBoard.getHeight() + 10
+            getX() - getWidth() / 2,
+            getY()
         );
         achievementBoard.setVisible(true);
     }

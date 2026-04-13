@@ -8,7 +8,9 @@ public enum Achievement {
     LENGTH_TWENTY ("Long Boy", "Reach a snake length of 20"),
     SURVIVE_30 ("Survivor", "Survive for 30 seconds"),
     SURVIVE_60 ("Veteran", "Survive for 60 seconds"),
+    SURVIVE_60_NO_APPLE ("Apple Hater", "Survive for 30 seconds without collecting an apple"),
     SURVIVE_120 ("Legend", "Survive for 120 seconds"),
+    SURVIVE_120_NO_APPLE ("Stay Short", "Survive for 120 seconds without collecting an apple"),
     SPEED_DEMON ("Speed Demon", "Collect an apple in under 2 seconds"),
     PERFECTIONIST ("Perfectionist", "Collect 5 apples without missing one");
 

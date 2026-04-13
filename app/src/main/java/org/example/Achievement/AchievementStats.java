@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class AchievementStats extends JPanel {
-    private static final int WIDTH = 260;
+    private static final int WIDTH = 300;
     private static final int ROW_HEIGHT = 36;
     private static final int PADDING = 14;
     private static final int TOAST_H = 28;

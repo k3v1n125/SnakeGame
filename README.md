@@ -34,7 +34,8 @@ The achievements feature is not in the apk version yet
 [Modification #6](#6-stats-board--bug-fix) <br>
 [Modification #7](#7-game-pause--restart) <br>
 [Modification #8](#8-more-apples--formatted-game-time) <br>
-[Modification #9](#9-achievement--highscore)
+[Modification #9](#9-achievement--highscore) <br>
+[Modification #10](#10-modified-achievement--highscore-display-on-statsboard-and-new-achievements)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
@@ -123,6 +124,11 @@ When game over, the time would be shown in minutes and seconds if game is more t
 ### 9. Achievement & highscore
 This program now has two new feature, achievement and highscore <br>
 Currently, only length and stats related to apple would be recorded <br>
-Next modification will aim on recording and giving achievement for stars and
+Next modification will aim on recording and giving achievement for stars and specific task during game
+
+### 10. Modified achievement & highscore display on statsBoard and new achievements
+The statsBoard would now display the longest time played <br>
+The achievemntBoard is now located at the left of snake window <br>
+Added two new achievements, can be obtain by dodging apples for specific amount of time
 
 ### Expected next modifications: new feature, new achievements

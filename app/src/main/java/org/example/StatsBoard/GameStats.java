@@ -107,7 +107,7 @@ public class GameStats extends JPanel {
     }
 
     public void checkHighScore() {
-        highScoreManager.update(applesCollected, snakeLength, gameTime, fastestAppleTime);
+        highScoreManager.update(applesCollected, gameTime, fastestAppleTime);
     }
 
     public void setFastestStarCollected(long collectTime) {
@@ -198,8 +198,13 @@ public class GameStats extends JPanel {
         HighScore hs = highScoreManager.getRecord();
 
         g.setColor(Color.LIGHT_GRAY);
-        g.drawString("Best Apples:",   LABEL_X, y += LINE_HEIGHT);
+        g.drawString("Best Apples:", LABEL_X, y += LINE_HEIGHT);
         g.setColor(Color.GREEN);
-        g.drawString(String.valueOf(hs.bestApples), VALUE_X, y);
+        g.drawString(String.valueOf(hs.getBestApples()), VALUE_X, y);
+
+        g.setColor(Color.LIGHT_GRAY);
+        g.drawString("Longest Time Played:", LABEL_X, y += LINE_HEIGHT);
+        g.setColor(Color.GREEN);
+        g.drawString(String.valueOf(hs.getBestSurvivalSeconds()), VALUE_X, y);
     }
 }

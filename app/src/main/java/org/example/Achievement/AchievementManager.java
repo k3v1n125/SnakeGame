@@ -50,9 +50,15 @@ public class AchievementManager {
             tryUnlock(Achievement.SURVIVE_30);
         }
         if (elapsedSeconds >= 60) {
+            if (apples == 0) {
+                tryUnlock(Achievement.SURVIVE_60_NO_APPLE);
+            }
             tryUnlock(Achievement.SURVIVE_60);
         }
         if (elapsedSeconds >= 120) {
+            if (apples == 0) {
+                tryUnlock(Achievement.SURVIVE_120_NO_APPLE);
+            }
             tryUnlock(Achievement.SURVIVE_120);
         }
     }
