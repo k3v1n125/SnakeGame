@@ -35,11 +35,12 @@ The achievements feature is not in the apk version yet
 [Modification #7](#7-game-pause--restart) <br>
 [Modification #8](#8-more-apples--formatted-game-time) <br>
 [Modification #9](#9-achievement--highscore) <br>
-[Modification #10](#10-modified-achievement--highscore-display-on-statsboard-and-new-achievements)
+[Modification #10](#10-modified-achievement--highscore-display-on-statsboard-and-new-achievements) <br>
+[Modification #11](#11-winning-conditions-spawning-items--achievement-updates)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
-Declear startTime when initUI() in Snake and pass it to Board
+Declare startTime when initUI() in Snake and pass it to Board
 ```bash
 Instant startTime = Instant.now();
 add(new Board(startTime));
@@ -79,7 +80,7 @@ New Apple class: ```Apple.java``` <br>
 This makes it easier to add new items to the game
 
 ### 3. Score calculated & shown when game over
-Get the ammount of apple collected by substracting length of snake by 3 (initial length) <br>
+Get the amount of apple collected by subtracting length of snake by 3 (initial length) <br>
 Calculated average time per apple
 
 ### 4. Time limit for apple
@@ -103,15 +104,15 @@ public void actionPerformed(ActionEvent e) {
 ```
 
 ### 5. New star item
-After collecting 4 apples, stars will starts to appear <br>
+After collecting 4 apples, stars will start to appear <br>
 For each 5 stars collected, the snake can have an extra life to avoid touching itself <br>
 Items are now created by ItemFactory.java
 
 ### 6. Stats board & bug fix
-Add a stats borad next to snake window to show current snake's stats <br>
-Move all the stats (applesColledted, snakeLength, etc) into GameStats class <br>
+Add a stats board next to snake window to show current snake's stats <br>
+Move all the stats (applesCollected, snakeLength, etc) into GameStats class <br>
 StartTime is now recorded here <br>
-Bug fix: add a ```moved``` boolean in Board class to avoid reversing into itself when two keys are press at the same time
+Bug fix: add a ```moved``` boolean in Board class to avoid reversing into itself when two keys are pressed at the same time
 
 ### 7. Game pause & restart
 When space is pressed, the entire game would pause <br>
@@ -122,13 +123,18 @@ For each 5 stars collected, there will be a new apple (at most 6 new apples) <br
 When game over, the time would be shown in minutes and seconds if game is more than 60 seconds
 
 ### 9. Achievement & highscore
-This program now has two new feature, achievement and highscore <br>
+This program now has two new features, achievement and highscore <br>
 Currently, only length and stats related to apple would be recorded <br>
 Next modification will aim on recording and giving achievement for stars and specific task during game
 
 ### 10. Modified achievement & highscore display on statsBoard and new achievements
 The statsBoard would now display the longest time played <br>
-The achievemntBoard is now located at the left of snake window <br>
-Added two new achievements, can be obtain by dodging apples for specific amount of time
+The achievementBoard is now located at the left of snake window <br>
+Added two new achievements, can be obtained by dodging apples for specific amount of time
+
+### 11. Winning conditions, spawning items, & achievement updates
+The game now has a winning condition, happens when the entire board is filled with the snake <br>
+A checker for item spawning, this avoids items to spawn on snake body, and make sure that total amount of items spawned is not more than the space left <br>
+Achievements now have categories, and the achievement board is scrollable
 
 ### Expected next modifications: new feature, new achievements

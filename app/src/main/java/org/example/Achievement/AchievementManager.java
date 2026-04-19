@@ -7,13 +7,20 @@ public class AchievementManager {
 
     private static final String SAVE_PATH = "saves/achievements.properties";
 
+    private final String savePath;
     private final Set<Achievement> unlocked = new HashSet<>();
     private AchievementListener listener;
 
     // Per-game counters (reset on restart)
     private int consecutiveCollected = 0;   // for PERFECTIONIST
+    private int consecutiveStarsCollected = 0;
 
     public AchievementManager() {
+        this(SAVE_PATH);
+    }
+
+    public AchievementManager(String savePath) {
+        this.savePath = savePath;
         load();
     }
 
@@ -46,6 +53,9 @@ public class AchievementManager {
         if (length >= 20) {
             tryUnlock(Achievement.LENGTH_TWENTY);
         }
+    }
+
+    public void onGameEnded(int apples, long elapsedSeconds) {
         if (elapsedSeconds >= 30) {
             tryUnlock(Achievement.SURVIVE_30);
         }
@@ -79,9 +89,25 @@ public class AchievementManager {
         consecutiveCollected = 0;   // streak broken
     }
 
+    public void onStarCollected() {
+        consecutiveStarsCollected++;
+        if (consecutiveStarsCollected >= 5) {
+            tryUnlock(Achievement.STAR_KEEPER);
+        }
+    }
+
+    public void onStarMissed() {
+        consecutiveStarsCollected = 0;
+    }
+
+    public void onGameWon() {
+        tryUnlock(Achievement.BOARD_FILLER);
+    }
+
     // Reset per-game counters on restart (permanent unlocks stay)
     public void resetGame() {
         consecutiveCollected = 0;
+        consecutiveStarsCollected = 0;
     }
 
     private void tryUnlock(Achievement a) {
@@ -92,7 +118,7 @@ public class AchievementManager {
     }
 
     private void load() {
-        File file = new File(SAVE_PATH);
+        File file = new File(savePath);
         if (!file.exists()) return;
         try (InputStream in = new FileInputStream(file)) {
             Properties p = new Properties();
@@ -109,12 +135,16 @@ public class AchievementManager {
 
     private void save() {
         try {
-            new File("saves").mkdirs();
+            File file = new File(savePath);
+            File parent = file.getParentFile();
+            if (parent != null) {
+                parent.mkdirs();
+            }
             Properties p = new Properties();
             for (Achievement a : Achievement.values()) {
                 p.setProperty(a.name(), String.valueOf(unlocked.contains(a)));
             }
-            try (OutputStream out = new FileOutputStream(SAVE_PATH)) {
+            try (OutputStream out = new FileOutputStream(file)) {
                 p.store(out, "Snake Achievements");
             }
         } catch (IOException e) {

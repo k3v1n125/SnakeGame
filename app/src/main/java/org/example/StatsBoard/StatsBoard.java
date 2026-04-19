@@ -60,6 +60,14 @@ public class StatsBoard extends JFrame implements GameStatsListener {
         gameStats.appleMissed();
     }
 
+    public void starMissed() {
+        gameStats.starMissed();
+    }
+
+    public void gameWon() {
+        gameStats.gameWon();
+    }
+
     public void checkStats() {
         gameStats.checkStats();
     }

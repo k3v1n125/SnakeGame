@@ -93,6 +93,7 @@ public class GameStats extends JPanel {
 
     public void increaseStarCollected() {
         starCollected = starCollected + 1;
+        achievementManager.onStarCollected();
     }
 
     public void setFastestAppleCollected(long collectTime) {
@@ -104,6 +105,11 @@ public class GameStats extends JPanel {
     public void checkStats() {
         long time = Duration.between(startTime, Instant.now()).toSeconds();
         achievementManager.checkStats(applesCollected, snakeLength, time);
+    }
+
+    public void gameEnded() {
+        updateStats();
+        achievementManager.onGameEnded(applesCollected, gameTime);
     }
 
     public void checkHighScore() {
@@ -118,6 +124,14 @@ public class GameStats extends JPanel {
 
     public void appleMissed() {
         achievementManager.onAppleMissed();
+    }
+
+    public void starMissed() {
+        achievementManager.onStarMissed();
+    }
+
+    public void gameWon() {
+        achievementManager.onGameWon();
     }
 
     public void setGameTime(long gameTime) {

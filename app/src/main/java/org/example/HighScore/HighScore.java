@@ -7,7 +7,7 @@ public class HighScore {
 
     public HighScore() {
         fastestAppleSeconds = Long.MAX_VALUE;   // sentinel — no record yet
-        bestSurvivalSeconds = Long.MIN_VALUE;
+        bestSurvivalSeconds = 0;
     }
 
     public HighScore(int bestApples, long bestSurvivalSeconds, long fastestAppleSeconds) {

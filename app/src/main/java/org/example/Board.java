@@ -14,12 +14,15 @@ import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import org.example.Item.Apple;
 import org.example.Item.Item;
+import org.example.Item.Star;
 import org.example.ItemFactory.AppleFactory;
 import org.example.ItemFactory.ItemFactory;
 import org.example.ItemFactory.StarFactory;
@@ -31,7 +34,6 @@ public class Board extends JPanel implements ActionListener {
     private final int B_HEIGHT = 600;
     private final int DOT_SIZE = 20;
     private final int ALL_DOTS = 900;
-    private final int RAND_POS = 29;
     private final int DELAY = 140;
 
     private final int x[] = new int[ALL_DOTS];
@@ -45,6 +47,7 @@ public class Board extends JPanel implements ActionListener {
     private boolean upDirection = false;
     private boolean downDirection = false;
     private boolean inGame = true;
+    private boolean gameWon = false;
 
     private Timer timer;
     private Image dot;
@@ -143,11 +146,11 @@ public class Board extends JPanel implements ActionListener {
 
             Toolkit.getDefaultToolkit().sync();
         } else {
-            gameOver(g);
+            drawEndStatus(g);
         }
     }
 
-    private void gameOver(Graphics g) {
+    private void drawEndStatus(Graphics g) {
         long duration = statsBoard.getGameTime();
         long gameMinutes = duration / 60;
         long gameSeconds = duration % 60;
@@ -158,7 +161,7 @@ public class Board extends JPanel implements ActionListener {
         int appleCollected = statsBoard.getAppleCollected();
         int starCollected = statsBoard.getStarCollected();
         
-        String msg1 = "Game Over";
+        String msg1 = gameWon ? "You Win" : "Game Over";
         String msg2 = "Duration: " + durationMsg;
         String msg3 = "Apples collected: " + appleCollected;
         String msg4 = "Stars collected: " + starCollected;
@@ -177,6 +180,134 @@ public class Board extends JPanel implements ActionListener {
         g.drawString(msg5, (B_WIDTH - metr.stringWidth(msg5)) / 2, B_HEIGHT / 2 + 56);
     }
 
+    private void finishGame(boolean won) {
+        gameWon = won;
+        inGame = false;
+        timer.stop();
+        if (statsBoard != null) {
+            statsBoard.getGameStats().gameEnded();
+            statsBoard.checkHighScore();
+            statsBoard.dispose();
+        }
+    }
+
+    private boolean isWinningState() {
+        return statsBoard.getSnakeLength() >= ALL_DOTS;
+    }
+
+    private boolean isOccupiedBySnake(int itemX, int itemY) {
+        for (int z = 0; z < statsBoard.getSnakeLength(); z++) {
+            if (x[z] == itemX && y[z] == itemY) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isOccupiedByItem(int itemX, int itemY) {
+        for (Item item : items) {
+            if (item.getX() == itemX && item.getY() == itemY) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private List<int[]> getFreeCells() {
+        List<int[]> freeCells = new ArrayList<>();
+        int columns = B_WIDTH / DOT_SIZE;
+        int rows = B_HEIGHT / DOT_SIZE;
+
+        for (int column = 0; column < columns; column++) {
+            for (int row = 0; row < rows; row++) {
+                int itemX = column * DOT_SIZE;
+                int itemY = row * DOT_SIZE;
+                if (!isOccupiedBySnake(itemX, itemY) && !isOccupiedByItem(itemX, itemY)) {
+                    freeCells.add(new int[] { itemX, itemY });
+                }
+            }
+        }
+
+        return freeCells;
+    }
+
+    private boolean hasItemOfType(Class<? extends Item> itemType) {
+        for (Item item : items) {
+            if (itemType.isInstance(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean removeFirstItemOfType(Class<? extends Item> itemType) {
+        for (int index = 0; index < items.size(); index++) {
+            if (itemType.isInstance(items.get(index))) {
+                items.remove(index);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void ensureAppleAvailability() {
+        if (isWinningState() || hasItemOfType(Apple.class)) {
+            return;
+        }
+
+        while (hasItemOfType(Star.class)) {
+            removeFirstItemOfType(Star.class);
+            if (locateItem(new AppleFactory(appleImage))) {
+                return;
+            }
+        }
+
+        locateItem(new AppleFactory(appleImage));
+    }
+
+    private void respawnItemsByPriority(List<Item> removedItems) {
+        for (Item item : removedItems) {
+            if (item instanceof Apple) {
+                item.locateItem(this);
+            }
+        }
+        for (Item item : removedItems) {
+            if (item instanceof Star) {
+                item.locateItem(this);
+            }
+        }
+    }
+
+    private void refreshItemsAfterBoardChange(List<Item> removedItems) {
+        items.removeAll(removedItems);
+
+        if (isWinningState()) {
+            items.clear();
+            statsBoard.gameWon();
+            finishGame(true);
+            return;
+        }
+
+        respawnItemsByPriority(removedItems);
+
+        if (statsBoard.getStarCollected() % 5 == 0 && statsBoard.getStarCollected() > newAppleIntroduced) {
+            if (locateItem(new AppleFactory(appleImage))) {
+                newAppleIntroduced = statsBoard.getStarCollected();
+                if (newAppleIntroduced == 30) {
+                    newAppleIntroduced = Integer.MAX_VALUE;
+                }
+            }
+        }
+
+        if (statsBoard.getAppleCollected() == introduceStar && !starIntroduced) {
+            if (locateItem(new StarFactory(starImage))) {
+                starIntroduced = true;
+            }
+        }
+
+        ensureAppleAvailability();
+    }
+
     private void checkItem() {
         ArrayList<Item> removeItems = new ArrayList<>();
         for (Item item : items) {
@@ -185,20 +316,8 @@ public class Board extends JPanel implements ActionListener {
                 removeItems.add(item);
             }
         }
-        items.removeAll(removeItems);
-        for (Item item : removeItems) {
-            item.locateItem(this);
-        }
-        if (statsBoard.getAppleCollected() == introduceStar && !starIntroduced) {
-            locateItem(new StarFactory(starImage));
-            starIntroduced = true;
-        }
-        if (statsBoard.getStarCollected() % 5 == 0 && statsBoard.getStarCollected() > newAppleIntroduced) {
-            locateItem(new AppleFactory(appleImage));
-            newAppleIntroduced = statsBoard.getStarCollected();
-            if (newAppleIntroduced == 30) {
-                newAppleIntroduced = Integer.MAX_VALUE;
-            }
+        if (!removeItems.isEmpty()) {
+            refreshItemsAfterBoardChange(removeItems);
         }
     }
 
@@ -232,43 +351,38 @@ public class Board extends JPanel implements ActionListener {
                 if (statsBoard.getExtraLife() >= 1) {
                     statsBoard.decreaseExtraLife();
                 } else {
-                    inGame = false;
+                    finishGame(false);
                 }
             }
         }
 
         if (y[0] >= B_HEIGHT) {
-            inGame = false;
+            finishGame(false);
         }
 
         if (y[0] < 0) {
-            inGame = false;
+            finishGame(false);
         }
 
         if (x[0] >= B_WIDTH) {
-            inGame = false;
+            finishGame(false);
         }
 
         if (x[0] < 0) {
-            inGame = false;
-        }
-        
-        if (!inGame) {
-            timer.stop();
-            if (statsBoard != null) {
-                statsBoard.checkHighScore();
-                statsBoard.dispose();
-            }
+            finishGame(false);
         }
     }
 
-    public void locateItem(ItemFactory factory) {
-        int r = (int) (Math.random() * RAND_POS);
-        int item_x = ((r * DOT_SIZE));
+    public boolean locateItem(ItemFactory factory) {
+        List<int[]> freeCells = getFreeCells();
+        if (freeCells.isEmpty()) {
+            return false;
+        }
 
-        r = (int) (Math.random() * RAND_POS);
-        int item_y = ((r * DOT_SIZE));
-        items.add(factory.create(item_x, item_y, Instant.now()));
+        int randomIndex = (int) (Math.random() * freeCells.size());
+        int[] position = freeCells.get(randomIndex);
+        items.add(factory.create(position[0], position[1], Instant.now()));
+        return true;
     }
 
     @Override
@@ -279,19 +393,26 @@ public class Board extends JPanel implements ActionListener {
             for (Item item : items) {
                 if (item.existDuration().getSeconds() >= item.getExpireDuration().toSeconds()) {
                     removeItems.add(item);
-                    statsBoard.appleMissed();
+                    if (item instanceof Apple) {
+                        statsBoard.appleMissed();
+                    } else if (item instanceof Star) {
+                        statsBoard.starMissed();
+                    }
                 }
             }
-            items.removeAll(removeItems);
-            for (Item item : removeItems) {
-                item.locateItem(this);
+            if (!removeItems.isEmpty()) {
+                refreshItemsAfterBoardChange(removeItems);
             }
             checkItem();
-            checkCollision();
-            move();
+            if (inGame) {
+                checkCollision();
+            }
+            if (inGame) {
+                move();
+                statsBoard.checkStats();
+                notifyStatsListener();
+            }
             moved = false;
-            statsBoard.checkStats();
-            notifyStatsListener();
         }
 
         repaint();
