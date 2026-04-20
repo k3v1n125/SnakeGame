@@ -7,8 +7,7 @@ The original code is licensed under the BSD 2-Clause License (2020, Jan Bodnar).
 Modifications and additional features have been added in this project.
 
 ## Running this program
-Make sure you have java installed, then move to SnakeGame directory and run:
-
+Make sure you have java installed, then move to SnakeGame directory and run: <br>
 For MacOS/Linux
 ```bash
 ./gradlew run
@@ -19,7 +18,7 @@ gradlew.bat run
 ```
 For Android <br>
 Download and install the apk <br>
-The achievements feature is not in the apk version yet
+[Link to SnakeGameAndroid repo](https://github.com/k3v1n125/SnakeGameAndroid)
 
 
 ## Modification
