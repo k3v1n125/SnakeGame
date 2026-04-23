@@ -27,6 +27,10 @@ public abstract class Item {
         g.drawImage(image, x, y, DOT_SIZE, DOT_SIZE, board);
     }
 
+    protected void setImage(Image image) {
+        this.image = image;
+    }
+
     public int getX() {
         return x;
     }

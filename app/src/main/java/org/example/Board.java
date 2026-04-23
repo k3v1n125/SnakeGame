@@ -51,8 +51,6 @@ public class Board extends JPanel implements ActionListener {
 
     private Timer timer;
     private Image dot;
-    private Image appleImage;
-    private Image starImage;
     private Image head;
 
     private boolean moved = false;
@@ -92,11 +90,6 @@ public class Board extends JPanel implements ActionListener {
         ImageIcon iid = new ImageIcon(getClass().getResource("/dot.png"));
         dot = iid.getImage();
 
-        ImageIcon iia = new ImageIcon(getClass().getResource("/apple.png"));
-        appleImage = iia.getImage();
-        ImageIcon iis = new ImageIcon(getClass().getResource("/star.png"));
-        starImage = iis.getImage();
-
         ImageIcon iih = new ImageIcon(getClass().getResource("/head.png"));
         head = iih.getImage();
     }
@@ -108,7 +101,7 @@ public class Board extends JPanel implements ActionListener {
             y[z] = 2 * DOT_SIZE;
         }
         
-        locateItem(new AppleFactory(appleImage));
+        locateItem(new AppleFactory());
 
         timer = new Timer(DELAY, this);
         timer.start();
@@ -257,12 +250,12 @@ public class Board extends JPanel implements ActionListener {
 
         while (hasItemOfType(Star.class)) {
             removeFirstItemOfType(Star.class);
-            if (locateItem(new AppleFactory(appleImage))) {
+            if (locateItem(new AppleFactory())) {
                 return;
             }
         }
 
-        locateItem(new AppleFactory(appleImage));
+        locateItem(new AppleFactory());
     }
 
     private void respawnItemsByPriority(List<Item> removedItems) {
@@ -291,7 +284,7 @@ public class Board extends JPanel implements ActionListener {
         respawnItemsByPriority(removedItems);
 
         if (statsBoard.getStarCollected() % 5 == 0 && statsBoard.getStarCollected() > newAppleIntroduced) {
-            if (locateItem(new AppleFactory(appleImage))) {
+            if (locateItem(new AppleFactory())) {
                 newAppleIntroduced = statsBoard.getStarCollected();
                 if (newAppleIntroduced == 30) {
                     newAppleIntroduced = Integer.MAX_VALUE;
@@ -300,7 +293,7 @@ public class Board extends JPanel implements ActionListener {
         }
 
         if (statsBoard.getAppleCollected() == introduceStar && !starIntroduced) {
-            if (locateItem(new StarFactory(starImage))) {
+            if (locateItem(new StarFactory())) {
                 starIntroduced = true;
             }
         }

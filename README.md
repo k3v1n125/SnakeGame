@@ -136,4 +136,7 @@ The game now has a winning condition, happens when the entire board is filled wi
 A checker for item spawning, this avoids items to spawn on snake body, and make sure that total amount of items spawned is not more than the space left <br>
 Achievements now have categories, and the achievement board is scrollable
 
+### 12. Items status
+Each item has different color when it already exist 1/3 and 2/3 of its expire time
+
 ### Expected next modifications: new feature, new achievements

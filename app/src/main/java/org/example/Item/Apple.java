@@ -1,20 +1,41 @@
 package org.example.Item;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.time.Duration;
 import java.time.Instant;
+
+import javax.swing.ImageIcon;
 
 import org.example.Board;
 import org.example.ItemFactory.AppleFactory;
 import org.example.StatsBoard.GameStats;
 
 public class Apple extends Item {
+    private static final Image IMAGE_STAGE_1 = new ImageIcon(Apple.class.getResource("/apple/1.png")).getImage();
+    private static final Image IMAGE_STAGE_2 = new ImageIcon(Apple.class.getResource("/apple/2.png")).getImage();
+    private static final Image IMAGE_STAGE_3 = new ImageIcon(Apple.class.getResource("/apple/3.png")).getImage();
+    private static final long STAGE_1_END_SECONDS = 7;
+    private static final long STAGE_2_END_SECONDS = 4;
     private AppleFactory factory;
-    private Duration expireDuration = Duration.ofSeconds(5);
+    private Duration expireDuration = Duration.ofSeconds(10);
 
-    public Apple(Image image, int x, int y, Instant applePlacedTime) {
-        super(image, x, y, applePlacedTime);
-        factory = new AppleFactory(image);
+    public Apple(int x, int y, Instant applePlacedTime) {
+        super(IMAGE_STAGE_1, x, y, applePlacedTime);
+        factory = new AppleFactory();
+    }
+
+    @Override
+    public void draw(Graphics g, Board board) {
+        long remainingSeconds = getExpireDuration().minus(existDuration()).getSeconds();
+        if (remainingSeconds >= STAGE_1_END_SECONDS) {
+            setImage(IMAGE_STAGE_1);
+        } else if (remainingSeconds >= STAGE_2_END_SECONDS) {
+            setImage(IMAGE_STAGE_2);
+        } else {
+            setImage(IMAGE_STAGE_3);
+        }
+        super.draw(g, board);
     }
 
     @Override
