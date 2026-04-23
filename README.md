@@ -35,7 +35,8 @@ Download and install the apk <br>
 [Modification #8](#8-more-apples--formatted-game-time) <br>
 [Modification #9](#9-achievement--highscore) <br>
 [Modification #10](#10-modified-achievement--highscore-display-on-statsboard-and-new-achievements) <br>
-[Modification #11](#11-winning-conditions-spawning-items--achievement-updates)
+[Modification #11](#11-winning-conditions-spawning-items--achievement-updates) <br>
+[Modification #12](#12-items-status)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
