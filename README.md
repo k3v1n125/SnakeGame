@@ -36,7 +36,8 @@ Download and install the apk <br>
 [Modification #9](#9-achievement--highscore) <br>
 [Modification #10](#10-modified-achievement--highscore-display-on-statsboard-and-new-achievements) <br>
 [Modification #11](#11-winning-conditions-spawning-items--achievement-updates) <br>
-[Modification #12](#12-items-status)
+[Modification #12](#12-items-status) <br>
+[Modification #13](#13-new-pineapple-item--bug-fix)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
@@ -139,5 +140,11 @@ Achievements now have categories, and the achievement board is scrollable
 
 ### 12. Items status
 Each item has different color when it already exist 1/3 and 2/3 of its expire time
+
+### 13. New pineapple item & bug fix
+A new item, pineapple will start to appear after collecting 25 stars <br>
+When a pineapple is collected, the length of snake will decrease by 1 <br>
+This can make the duration of game longer by avoiding the winning status, and player can collect more items in one game
+Bug fix: fix item status changing when game is paused
 
 ### Expected next modifications: new feature, new achievements

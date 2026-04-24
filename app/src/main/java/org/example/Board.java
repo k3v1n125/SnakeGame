@@ -22,9 +22,11 @@ import javax.swing.Timer;
 
 import org.example.Item.Apple;
 import org.example.Item.Item;
+import org.example.Item.Pineapple;
 import org.example.Item.Star;
 import org.example.ItemFactory.AppleFactory;
 import org.example.ItemFactory.ItemFactory;
+import org.example.ItemFactory.PineappleFactory;
 import org.example.ItemFactory.StarFactory;
 import org.example.StatsBoard.StatsBoard;
 
@@ -39,8 +41,10 @@ public class Board extends JPanel implements ActionListener {
     private final int x[] = new int[ALL_DOTS];
     private final int y[] = new int[ALL_DOTS];
 
-    private final int introduceStar = 4;
+    private final int introduceStar = 5;
+    private final int introducePineapple = 25;
     private boolean starIntroduced = false;
+    private boolean pineappleIntroduced = false;
 
     private boolean leftDirection = false;
     private boolean rightDirection = true;
@@ -255,12 +259,24 @@ public class Board extends JPanel implements ActionListener {
             }
         }
 
+        while (hasItemOfType(Pineapple.class)) {
+            removeFirstItemOfType(Pineapple.class);
+            if (locateItem(new AppleFactory())) {
+                return;
+            }
+        }
+
         locateItem(new AppleFactory());
     }
 
     private void respawnItemsByPriority(List<Item> removedItems) {
         for (Item item : removedItems) {
             if (item instanceof Apple) {
+                item.locateItem(this);
+            }
+        }
+        for (Item item : removedItems) {
+            if (item instanceof Pineapple) {
                 item.locateItem(this);
             }
         }
@@ -298,6 +314,12 @@ public class Board extends JPanel implements ActionListener {
             }
         }
 
+        if (statsBoard.getStarCollected() == introducePineapple && !pineappleIntroduced) {
+            if (locateItem(new PineappleFactory())) {
+                pineappleIntroduced = true;
+            }
+        }
+
         ensureAppleAvailability();
     }
 
@@ -305,9 +327,18 @@ public class Board extends JPanel implements ActionListener {
         ArrayList<Item> removeItems = new ArrayList<>();
         for (Item item : items) {
             if ((x[0] == item.getX()) && (y[0] == item.getY())) {
+                if (item instanceof Pineapple && statsBoard.getSnakeLength() == 1) {
+                    finishGame(false);
+                    removeItems.add(item);
+                    continue;
+                }
                 item.itemEffect(statsBoard.getGameStats());
                 removeItems.add(item);
             }
+        }
+        if (!inGame) {
+            items.removeAll(removeItems);
+            return;
         }
         if (!removeItems.isEmpty()) {
             refreshItemsAfterBoardChange(removeItems);
@@ -411,6 +442,14 @@ public class Board extends JPanel implements ActionListener {
         repaint();
     }
 
+    private void resume() {
+        paused = false;
+        Duration pauseDuration = statsBoard.resume();
+        for (Item item : items) {
+            item.setPauseDuration(pauseDuration);
+        }
+    }
+
     private class TAdapter extends KeyAdapter {
 
         @Override
@@ -431,11 +470,11 @@ public class Board extends JPanel implements ActionListener {
                 paused = !paused;
                 if (paused) {
                     statsBoard.pause();
-                } else {
-                    Duration pauseDuration = statsBoard.resume();
                     for (Item item : items) {
-                        item.setPauseDuration(pauseDuration);
+                        item.startPause();
                     }
+                } else {
+                    resume();
                 }
                 return;
             }
@@ -448,26 +487,41 @@ public class Board extends JPanel implements ActionListener {
                 leftDirection = true;
                 upDirection = false;
                 downDirection = false;
+                if (paused) {
+                    resume();
+                }
+                moved = true;
             }
 
             if ((key == KeyEvent.VK_RIGHT) && (!leftDirection) && (!rightDirection)) {
                 rightDirection = true;
                 upDirection = false;
                 downDirection = false;
+                if (paused) {
+                    resume();
+                }
+                moved = true;
             }
 
             if ((key == KeyEvent.VK_UP) && (!downDirection) && (!upDirection)) {
                 upDirection = true;
                 rightDirection = false;
                 leftDirection = false;
+                if (paused) {
+                    resume();
+                }
+                moved = true;
             }
 
             if ((key == KeyEvent.VK_DOWN) && (!upDirection) && (!downDirection)) {
                 downDirection = true;
                 rightDirection = false;
                 leftDirection = false;
+                if (paused) {
+                    resume();
+                }
+                moved = true;
             }
-            moved = true;
         }
     }
 }

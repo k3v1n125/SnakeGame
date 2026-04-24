@@ -15,6 +15,7 @@ public abstract class Item {
     private int y;
     private Instant placedTime;
     private Duration pauseDuration = Duration.ZERO;
+    private Instant activePauseStart = null;
     
     public Item(Image image, int x, int y, Instant placedTime) {
         this.image = image;
@@ -44,11 +45,22 @@ public abstract class Item {
     }
 
     public Duration existDuration() {
-        return Duration.between(placedTime, Instant.now()).minus(pauseDuration);
+        Duration elapsed = Duration.between(placedTime, Instant.now()).minus(pauseDuration);
+        if (activePauseStart != null) {
+            elapsed = elapsed.minus(Duration.between(activePauseStart, Instant.now()));
+        }
+        return elapsed;
+    }
+
+    public void startPause() {
+        if (activePauseStart == null) {
+            activePauseStart = Instant.now();
+        }
     }
 
     public void setPauseDuration(Duration pauseDuration) {
         this.pauseDuration = this.pauseDuration.plus(pauseDuration);
+        this.activePauseStart = null;
     }
 
     public abstract void locateItem(Board board);
