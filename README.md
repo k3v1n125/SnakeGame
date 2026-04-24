@@ -144,7 +144,7 @@ Each item has different color when it already exist 1/3 and 2/3 of its expire ti
 ### 13. New pineapple item & bug fix
 A new item, pineapple will start to appear after collecting 25 stars <br>
 When a pineapple is collected, the length of snake will decrease by 1 <br>
-This can make the duration of game longer by avoiding the winning status, and player can collect more items in one game
+This can make the duration of game longer by avoiding the winning status, and player can collect more items in one game <br>
 Bug fix: fix item status changing when game is paused
 
 ### Expected next modifications: new feature, new achievements
