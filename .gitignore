@@ -8,3 +8,5 @@ build
 .kotlin
 
 app/saves
+
+.DS_Store
