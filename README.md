@@ -20,6 +20,9 @@ For Android <br>
 Download and install the apk <br>
 [Link to SnakeGameAndroid repo](https://github.com/k3v1n125/SnakeGameAndroid)
 
+For iOS <br>
+Visit this [Repository](https://github.com/k3v1n125/SnakeGameiOS)
+
 
 ## Modification
 
