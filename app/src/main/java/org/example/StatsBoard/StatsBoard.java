@@ -52,6 +52,10 @@ public class StatsBoard extends JFrame implements GameStatsListener {
         return gameStats.getLives();
     }
 
+    public void setLives(int lives) {
+        gameStats.setLives(lives);
+    }
+
     public void decreaseLives() {
         gameStats.decreaseLives();
     }

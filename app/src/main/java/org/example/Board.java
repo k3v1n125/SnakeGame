@@ -184,6 +184,9 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void finishGame(boolean won) {
+        if (!won) {
+            statsBoard.setLives(0);
+        }
         gameWon = won;
         inGame = false;
         timer.stop();
@@ -426,8 +429,9 @@ public class Board extends JPanel implements ActionListener {
             if ((x[0] == x[z]) && (y[0] == y[z])) {
                 if (statsBoard.getLives() >= 1) {
                     statsBoard.decreaseLives();
-                } else {
-                    finishGame(false);
+                    if (statsBoard.getLives() == 0) {
+                        finishGame(false);
+                    }
                 }
             }
         }

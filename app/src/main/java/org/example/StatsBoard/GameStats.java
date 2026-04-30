@@ -101,6 +101,10 @@ public class GameStats extends JPanel {
         live = live - 1;
     }
 
+    public void setLives(int lives) {
+        this.live = lives;
+    }
+
     public void increaseSnakeLength() {
         snakeLength = snakeLength + 1;
     }
