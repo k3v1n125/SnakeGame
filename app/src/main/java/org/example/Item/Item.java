@@ -16,12 +16,18 @@ public abstract class Item {
     private Instant placedTime;
     private Duration pauseDuration = Duration.ZERO;
     private Instant activePauseStart = null;
+    private final int spawnPriority;
     
-    public Item(Image image, int x, int y, Instant placedTime) {
+    public Item(Image image, int x, int y, Instant placedTime, int spawnPriority) {
         this.image = image;
         this.x = x;
         this.y = y;
         this.placedTime = placedTime;
+        this.spawnPriority = spawnPriority;
+    }
+
+    public int getSpawnPriority() {
+        return spawnPriority;
     }
 
     public void draw(Graphics g, Board board) {
@@ -62,6 +68,8 @@ public abstract class Item {
         this.pauseDuration = this.pauseDuration.plus(pauseDuration);
         this.activePauseStart = null;
     }
+
+    public abstract void itemMissed(GameStats gameStats);
 
     public abstract void locateItem(Board board);
     public abstract void itemEffect(GameStats gameStats);

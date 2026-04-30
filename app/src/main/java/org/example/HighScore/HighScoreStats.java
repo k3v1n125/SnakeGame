@@ -65,5 +65,11 @@ public class HighScoreStats extends JPanel {
         long fastestApple = record.getFastestAppleSeconds();
         String fastestText = fastestApple == Long.MAX_VALUE ? "N/A" : fastestApple + "s";
         g.drawString(fastestText, WIDTH - 60, y);
+
+        y += LINE_HEIGHT;
+        g.setColor(Color.LIGHT_GRAY);
+        g.drawString("Best Walls Destroyed:", PADDING, y);
+        g.setColor(Color.GREEN);
+        g.drawString(String.valueOf(record.getBestWallsDestroyed()), WIDTH - 60, y);
     }
 }

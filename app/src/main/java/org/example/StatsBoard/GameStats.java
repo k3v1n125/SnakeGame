@@ -9,14 +9,13 @@ import java.time.Duration;
 import java.time.Instant;
 
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import org.example.Achievement.AchievementManager;
 import org.example.HighScore.HighScoreManager;
 
 public class GameStats extends JPanel {
     private static final int WIDTH  = 220;
-    private static final int HEIGHT = 200;
+    private static final int HEIGHT = 280;
     private static final int LINE_HEIGHT = 25;
     private static final int START_Y = 50;
     private static final int LABEL_X = 15;
@@ -26,6 +25,10 @@ public class GameStats extends JPanel {
     private int applesCollected;
     private int starCollected;
     private int pineappleCollected;
+    private int useableHammer;
+    private int hammerCollected;
+    private int wallsDestroyed;
+    private int starsMissed;
     private int live;
 
     private Instant startTime;
@@ -37,7 +40,7 @@ public class GameStats extends JPanel {
 
     private long fastestAppleTime = Long.MAX_VALUE;
     private long fastestStarTime = Long.MAX_VALUE;
-    private boolean starSectionUnlocked = false;
+    private boolean hammerUnlocked = false;
 
     private AchievementManager achievementManager;
     private HighScoreManager highScoreManager;
@@ -49,6 +52,9 @@ public class GameStats extends JPanel {
         this.applesCollected = 0;
         this.starCollected = 0;
         this.pineappleCollected = 0;
+        this.hammerCollected = 0;
+        this.useableHammer = 0;
+        this.wallsDestroyed = 0;
         this.live = 1;
         this.gameTime = 0;
         this.achievementManager = achievementManager;
@@ -57,20 +63,33 @@ public class GameStats extends JPanel {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
     }
 
-    private void updatePreferredHeight() {
-        boolean shouldShowStarSection = applesCollected >= 5;
-        if (starSectionUnlocked == shouldShowStarSection) {
-            return;
-        }
+    public void increaseHammerCollected() {
+        hammerCollected = hammerCollected + 1;
+        useableHammer = useableHammer + 1;
+    }
 
-        starSectionUnlocked = shouldShowStarSection;
-        setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        revalidate();
+    public void decreaseUseableHammer(int amount) {
+        useableHammer = useableHammer - amount;
+    }
 
-        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
-        if (window != null) {
-            window.pack();
-        }
+    public void setUseableHammer(int useableHammer) {
+        this.useableHammer = useableHammer;
+    }
+
+    public void unlockHammer() {
+        hammerUnlocked = true;
+    }
+
+    public int getUseableHammer() {
+        return useableHammer;
+    }
+
+    public void increaseWallsDestroyed() {
+        wallsDestroyed = wallsDestroyed + 1;
+    }
+
+    public int getWallsDestroyed() {
+        return wallsDestroyed;
     }
 
     public long getGameTime() {
@@ -117,7 +136,6 @@ public class GameStats extends JPanel {
         applesCollected = applesCollected + 1;
         Duration time = Duration.between(startTime, Instant.now());
         achievementManager.onAppleCollected(time.toSeconds());
-        updatePreferredHeight();
     }
 
     public void increaseStarCollected() {
@@ -149,7 +167,7 @@ public class GameStats extends JPanel {
     }
 
     public void checkHighScore() {
-        highScoreManager.update(applesCollected, gameTime, fastestAppleTime);
+        highScoreManager.update(applesCollected, gameTime, fastestAppleTime, wallsDestroyed);
     }
 
     public void setFastestStarCollected(long collectTime) {
@@ -163,7 +181,12 @@ public class GameStats extends JPanel {
     }
 
     public void starMissed() {
+        starsMissed++;
         achievementManager.onStarMissed();
+    }
+
+    public int getStarsMissed() {
+        return starsMissed;
     }
 
     public void gameWon() {
@@ -223,13 +246,25 @@ public class GameStats extends JPanel {
             pineappleText = String.valueOf(pineappleCollected);
         }
 
+        String hammerText = "Locked";
+        String useableHammerText = "Locked";
+        String wallsDestroyedText = "Locked";
+        if (hammerUnlocked) {
+            hammerText = String.valueOf(hammerCollected);
+            useableHammerText = String.valueOf(useableHammer);
+            wallsDestroyedText = String.valueOf(wallsDestroyed);
+        }
+
         String[][] rows = {
+            { "Lives:", String.valueOf(live) },
+            { "Duration:", gameTime + "s" },
             { "Snake Length:", String.valueOf(snakeLength) },
             { "Apples Collected:", String.valueOf(applesCollected) },
             { "Stars Collected:", starText },
             { "Pineapples Collected:", pineappleText },
-            { "Lives:", String.valueOf(live) },
-            { "Duration:", gameTime + "s" }
+            { "Hammers Collected:", hammerText },
+            { "Useable Hammers:", useableHammerText },
+            { "Walls Destroyed:", wallsDestroyedText }
         };
 
         int lines = 0;

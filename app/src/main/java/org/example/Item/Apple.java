@@ -21,7 +21,7 @@ public class Apple extends Item {
     private Duration expireDuration = Duration.ofSeconds(10);
 
     public Apple(int x, int y, Instant applePlacedTime) {
-        super(IMAGE_STAGE_1, x, y, applePlacedTime);
+        super(IMAGE_STAGE_1, x, y, applePlacedTime, 0);
         factory = new AppleFactory();
     }
 
@@ -54,5 +54,10 @@ public class Apple extends Item {
         gameStats.increaseApplesCollected();
         Duration collectTime = Duration.between(getPlacedTime(), Instant.now());
         gameStats.setFastestAppleCollected(collectTime.toSeconds());
+    }
+
+    @Override
+    public void itemMissed(GameStats gameStats) {
+        gameStats.appleMissed();
     }
 }

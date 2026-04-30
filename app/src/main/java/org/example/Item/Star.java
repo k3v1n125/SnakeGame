@@ -21,7 +21,7 @@ public class Star extends Item {
     private Duration expireDuration = Duration.ofSeconds(6);
 
     public Star(int x, int y, Instant starPlacedTime) {
-        super(IMAGE_STAGE_1, x, y, starPlacedTime);
+        super(IMAGE_STAGE_1, x, y, starPlacedTime, 2);
         factory = new StarFactory();
     }
 
@@ -53,5 +53,10 @@ public class Star extends Item {
         gameStats.increaseStarCollected();
         Duration collectTime = Duration.between(getPlacedTime(), Instant.now());
         gameStats.setFastestStarCollected(collectTime.toSeconds());
+    }
+
+    @Override
+    public void itemMissed(GameStats gameStats) {
+        gameStats.starMissed();
     }
 }

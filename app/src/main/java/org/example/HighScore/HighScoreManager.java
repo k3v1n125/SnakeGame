@@ -16,11 +16,12 @@ public class HighScoreManager {
 
     // Returns true if any record was beaten
     public boolean update(int apples,
-                          long survivalSeconds, long fastestApple) {
+                          long survivalSeconds, long fastestApple, int wallsDestroyed) {
         boolean beaten = false;
         beaten = record.setBestApples(apples, beaten);
         beaten = record.setBestSurvivalSeconds(survivalSeconds, beaten);
         beaten = record.setFastestAppleSeconds(fastestApple, beaten);
+        beaten = record.setBestWallsDestroyed(wallsDestroyed, beaten);
         if (beaten) {
             save();
         }
@@ -39,6 +40,7 @@ public class HighScoreManager {
             long fastestAppleSeconds = Long.parseLong(
                 p.getProperty("fastestApple", String.valueOf(Long.MAX_VALUE)));
             hs = new HighScore(bestApples, bestSurvivalSeconds, fastestAppleSeconds);
+            hs.setBestWallsDestroyed(Integer.parseInt(p.getProperty("bestWallsDestroyed", "0")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,6 +54,7 @@ public class HighScoreManager {
             p.setProperty("bestApples", String.valueOf(record.getBestApples()));
             p.setProperty("bestSurvival", String.valueOf(record.getBestSurvivalSeconds()));
             p.setProperty("fastestApple", String.valueOf(record.getFastestAppleSeconds()));
+            p.setProperty("bestWallsDestroyed", String.valueOf(record.getBestWallsDestroyed()));
             try (OutputStream out = new FileOutputStream(SAVE_PATH)) {
                 p.store(out, "Snake High Scores");
             }

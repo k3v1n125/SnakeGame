@@ -41,9 +41,10 @@ Visit this [Repository](https://github.com/k3v1n125/SnakeGameiOS)
 [Modification #11](#11-winning-conditions-spawning-items--achievement-updates) <br>
 [Modification #12](#12-items-status) <br>
 [Modification #13](#13-new-pineapple-item--bug-fix) <br>
-[Modification #14](#14-modification--improvements)
+[Modification #14](#14-modification--improvements) <br>
+[Modification #15](#15-wall--hammer)
 
-### 1. A "stopwatch" for the game, shows the time the snake survive when game over
+### 1. A "stopwatch" for the game, shows the time the snake survived when the game is over
 
 Declare startTime when initUI() in Snake and pass it to Board
 ```bash
@@ -78,18 +79,18 @@ private void gameOver(Graphics g) {
 }
 ```
 
-### 2. Make apple into a java class implementing Item interface
+### 2. Make Apple into a Java class implementing Item interface
 Interface: ```Item.java``` <br>
 New Apple class: ```Apple.java``` <br>
 ```locateApple()``` would create the Apple object <br>
 This makes it easier to add new items to the game
 
 ### 3. Score calculated & shown when game over
-Get the amount of apple collected by subtracting length of snake by 3 (initial length) <br>
+Get the amount of apples collected by subtracting the length of the snake by 3 (initial length) <br>
 Calculated average time per apple
 
 ### 4. Time limit for apple
-Apple would disappear after 5 seconds if not collected
+Apples would disappear after 5 seconds if not collected
 ```bash
 public void actionPerformed(ActionEvent e) {
     if (inGame) {
@@ -115,8 +116,8 @@ Items are now created by ItemFactory.java
 
 ### 6. Stats board & bug fix
 Add a stats board next to snake window to show current snake's stats <br>
-Move all the stats (applesCollected, snakeLength, etc) into GameStats class <br>
-StartTime is now recorded here <br>
+Move all the stats (applesCollected, snakeLength, etc.) into the GameStats class <br>
+startTime is now recorded here <br>
 Bug fix: add a ```moved``` boolean in Board class to avoid reversing into itself when two keys are pressed at the same time
 
 ### 7. Game pause & restart
@@ -125,37 +126,42 @@ When esc is pressed, the entire program would exit
 
 ### 8. More apples & formatted game time
 For each 5 stars collected, there will be a new apple (at most 6 new apples) <br>
-When game over, the time would be shown in minutes and seconds if game is more than 60 seconds
+When the game is over, the time would be shown in minutes and seconds if the game lasted more than 60 seconds
 
 ### 9. Achievement & highscore
 This program now has two new features, achievement and highscore <br>
-Currently, only length and stats related to apple would be recorded <br>
-Next modification will aim on recording and giving achievement for stars and specific task during game
+Currently, only length and stats related to apples would be recorded <br>
+The next modification will aim at recording and giving achievements for stars and specific tasks during the game
 
 ### 10. Modified achievement & highscore display on statsBoard and new achievements
 The statsBoard would now display the longest time played <br>
-The achievementBoard is now located at the left of snake window <br>
-Added two new achievements, can be obtained by dodging apples for specific amount of time
+The achievementBoard is now located at the left of the snake window <br>
+Added two new achievements, which can be obtained by dodging apples for a specific amount of time
 
 ### 11. Winning conditions, spawning items, & achievement updates
-The game now has a winning condition, happens when the entire board is filled with the snake <br>
-A checker for item spawning, this avoids items to spawn on snake body, and make sure that total amount of items spawned is not more than the space left <br>
+The game now has a winning condition, which happens when the entire board is filled with the snake <br>
+A checker for item spawning; this avoids items spawning on the snake body, and makes sure that the total amount of items spawned is not more than the space left <br>
 Achievements now have categories, and the achievement board is scrollable
 
 ### 12. Items status
-Each item has different color when it already exist 1/3 and 2/3 of its expire time
+Each item has a different color when it has already passed 1/3 and 2/3 of its expiry time
 
 ### 13. New pineapple item & bug fix
-A new item, pineapple will start to appear after collecting 25 stars <br>
-When a pineapple is collected, the length of snake will decrease by 1 <br>
-This can make the duration of game longer by avoiding the winning status, and player can collect more items in one game <br>
-Bug fix: fix item status changing when game is paused
+A new item, pineapple, will start to appear after collecting 25 stars <br>
+When a pineapple is collected, the length of the snake will decrease by 1 <br>
+This can make the duration of the game longer by avoiding the winning status, and the player can collect more items in one game <br>
+Bug fix: fixed item status changing when the game is paused
 
 ### 14. Modification & improvements
-Use squares instead of circles for snake <br>
+Use squares instead of circles for the snake <br>
 Move highscore into another panel <br>
-When game end, keep the game stats window and the game board would only show game end msg <br>
-Modified gameStats, showing "Locked" when item is not available yet <br>
-Use a direction queue to handle rapid keytapping
+When the game ends, keep the game stats window and the game board would only show the game end message <br>
+Modified gameStats, showing "Locked" when an item is not available yet <br>
+Use a direction queue to handle rapid key tapping
 
-### Expected next modifications: new feature, new achievements
+### 15. Wall & hammer
+For each 5 stars missed, that star would turn into a wall, and hammers would start to spawn <br>
+A wall can be broken through with 5 hammers; if there are not enough hammers, the snake's lives decrease <br>
+Modified items spawning priority and itemMissed methods
+
+### Expected next modifications: new feature, new achievements, penalty for item missed

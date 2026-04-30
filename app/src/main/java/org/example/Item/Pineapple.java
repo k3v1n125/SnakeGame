@@ -21,7 +21,7 @@ public class Pineapple extends Item {
     private Duration expireDuration = Duration.ofSeconds(10);
 
     public Pineapple(int x, int y, Instant pineapplePlacedTime) {
-        super(IMAGE_STAGE_1, x, y, pineapplePlacedTime);
+        super(IMAGE_STAGE_1, x, y, pineapplePlacedTime, 1);
         factory = new PineappleFactory();
     }
 
@@ -52,5 +52,10 @@ public class Pineapple extends Item {
     public void itemEffect(GameStats gameStats) {
         gameStats.increasePineappleCollected();
         gameStats.decreaseSnakeLength();
+    }
+
+    @Override
+    public void itemMissed(GameStats gameStats) {
+        return;
     }
 }

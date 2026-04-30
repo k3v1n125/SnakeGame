@@ -23,6 +23,10 @@ public class StatsBoard extends JFrame implements GameStatsListener {
         return gameStats;
     }
 
+    public int getStarsMissed() {
+        return gameStats.getStarsMissed();
+    }
+
     public int getSnakeLength() {
         return gameStats.getSnakeLength();
     }
@@ -62,6 +66,10 @@ public class StatsBoard extends JFrame implements GameStatsListener {
 
     public void appleMissed() {
         gameStats.appleMissed();
+    }
+
+    public void unlockHammer() {
+        gameStats.unlockHammer();
     }
 
     public void starMissed() {

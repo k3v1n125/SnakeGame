@@ -26,7 +26,9 @@ import org.example.Item.Apple;
 import org.example.Item.Item;
 import org.example.Item.Pineapple;
 import org.example.Item.Star;
+import org.example.Item.Wall;
 import org.example.ItemFactory.AppleFactory;
+import org.example.ItemFactory.HammerFactory;
 import org.example.ItemFactory.ItemFactory;
 import org.example.ItemFactory.PineappleFactory;
 import org.example.ItemFactory.StarFactory;
@@ -55,6 +57,7 @@ public class Board extends JPanel implements ActionListener {
     private final int introducePineapple = 25;
     private boolean starIntroduced = false;
     private boolean pineappleIntroduced = false;
+    private boolean hammerIntroduced = false;
 
     private boolean leftDirection = false;
     private boolean rightDirection = true;
@@ -278,21 +281,9 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void respawnItemsByPriority(List<Item> removedItems) {
-        for (Item item : removedItems) {
-            if (item instanceof Apple) {
-                item.locateItem(this);
-            }
-        }
-        for (Item item : removedItems) {
-            if (item instanceof Pineapple) {
-                item.locateItem(this);
-            }
-        }
-        for (Item item : removedItems) {
-            if (item instanceof Star) {
-                item.locateItem(this);
-            }
-        }
+        removedItems.stream()
+                .sorted((a, b) -> Integer.compare(a.getSpawnPriority(), b.getSpawnPriority()))
+                .forEach(item -> item.locateItem(this));
     }
 
     private void refreshItemsAfterBoardChange(List<Item> removedItems) {
@@ -341,6 +332,10 @@ public class Board extends JPanel implements ActionListener {
                 }
                 item.itemEffect(statsBoard.getGameStats());
                 removeItems.add(item);
+                if (statsBoard.getLives() <= 0) {
+                    finishGame(false);
+                    break;
+                }
             }
         }
         if (!inGame) {
@@ -468,18 +463,28 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         ArrayList<Item> removeItems = new ArrayList<Item>();
+        boolean addHammer = false;
 
         if (inGame && !paused) {
+            ArrayList<Item> wallsToAdd = new ArrayList<>();
             for (Item item : items) {
                 if (item.existDuration().getSeconds() >= item.getExpireDuration().toSeconds()) {
                     removeItems.add(item);
-                    if (item instanceof Apple) {
-                        statsBoard.appleMissed();
-                    } else if (item instanceof Star) {
-                        statsBoard.starMissed();
+                    item.itemMissed(statsBoard.getGameStats());
+                    if (item instanceof Star && statsBoard.getStarsMissed() % 5 == 0) {
+                        wallsToAdd.add(new Wall(item.getX(), item.getY(), Instant.now()));
+                        if (!hammerIntroduced) {
+                            hammerIntroduced = true;
+                            addHammer = true;
+                        }
                     }
                 }
             }
+            if (addHammer) {
+                locateItem(new HammerFactory());
+                statsBoard.unlockHammer();
+            }
+            items.addAll(wallsToAdd);
             if (!removeItems.isEmpty()) {
                 refreshItemsAfterBoardChange(removeItems);
             }
