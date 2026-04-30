@@ -23,11 +23,8 @@ Download and install the apk <br>
 For iOS <br>
 Visit this [Repository](https://github.com/k3v1n125/SnakeGameiOS)
 
-Alternative way for MacOS
-```bash
-./gradlew :app:bundleMacApp --no-configuration-cache
-```
-This would create SnakeGame.app at ```app/build/macos```, can be run by double-clicking at Finder
+Alternative way for MacOS <br>
+Double-click SnakeGame.app in Finder
 
 
 ## Modification

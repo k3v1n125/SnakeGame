@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<jpackage-state version="25.0.3" platform="macOS">
+  <app-version>1.0</app-version>
+  <main-launcher>SnakeGame</main-launcher>
+  <main-class>org.game.App</main-class>
+  <app-store>false</app-store>
+  <signed>false</signed></jpackage-state>
