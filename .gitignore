@@ -10,3 +10,4 @@ build
 app/saves
 
 .DS_Store
+.vscode
