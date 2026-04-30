@@ -3,9 +3,11 @@ package org.game.Achievement;
 import java.io.*;
 import java.util.*;
 
+import org.game.SavePaths;
+
 public class AchievementManager {
 
-    private static final String SAVE_PATH = "saves/achievements.properties";
+    private static final String SAVE_PATH = SavePaths.appSupportFile("achievements.properties");
 
     private final String savePath;
     private final Set<Achievement> unlocked = new HashSet<>();

@@ -3,9 +3,11 @@ package org.game.HighScore;
 import java.io.*;
 import java.util.Properties;
 
+import org.game.SavePaths;
+
 public class HighScoreManager {
 
-    private static final String SAVE_PATH = "saves/highscore.properties";
+    private static final String SAVE_PATH = SavePaths.appSupportFile("highscore.properties");
     private final HighScore record;
 
     public HighScoreManager() {
@@ -49,7 +51,7 @@ public class HighScoreManager {
 
     private void save() {
         try {
-            new File("saves").mkdirs();   // create saves/ folder if missing
+            SavePaths.appSupportDirectoryFile().mkdirs();
             Properties p = new Properties();
             p.setProperty("bestApples", String.valueOf(record.getBestApples()));
             p.setProperty("bestSurvival", String.valueOf(record.getBestSurvivalSeconds()));
