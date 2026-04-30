@@ -40,7 +40,8 @@ Visit this [Repository](https://github.com/k3v1n125/SnakeGameiOS)
 [Modification #10](#10-modified-achievement--highscore-display-on-statsboard-and-new-achievements) <br>
 [Modification #11](#11-winning-conditions-spawning-items--achievement-updates) <br>
 [Modification #12](#12-items-status) <br>
-[Modification #13](#13-new-pineapple-item--bug-fix)
+[Modification #13](#13-new-pineapple-item--bug-fix) <br>
+[Modification #14](#14-modification--improvements)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survive when game over
 
@@ -149,5 +150,12 @@ A new item, pineapple will start to appear after collecting 25 stars <br>
 When a pineapple is collected, the length of snake will decrease by 1 <br>
 This can make the duration of game longer by avoiding the winning status, and player can collect more items in one game <br>
 Bug fix: fix item status changing when game is paused
+
+### 14. Modification & improvements
+Use squares instead of circles for snake <br>
+Move highscore into another panel <br>
+When game end, keep the game stats window and the game board would only show game end msg <br>
+Modified gameStats, showing "Locked" when item is not available yet <br>
+Use a direction queue to handle rapid keytapping
 
 ### Expected next modifications: new feature, new achievements

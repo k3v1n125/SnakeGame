@@ -48,12 +48,12 @@ public class StatsBoard extends JFrame implements GameStatsListener {
         return gameStats.getStarCollected();
     }
 
-    public int getExtraLife() {
-        return gameStats.getExtraLife();
+    public int getLives() {
+        return gameStats.getLives();
     }
 
-    public void decreaseExtraLife() {
-        gameStats.decreaseExtraLife();
+    public void decreaseLives() {
+        gameStats.decreaseLives();
     }
 
     public void appleMissed() {

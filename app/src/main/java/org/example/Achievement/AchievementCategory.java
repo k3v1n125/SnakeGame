@@ -1,9 +1,8 @@
 package org.example.Achievement;
 
 public enum AchievementCategory {
-    COLLECT_APPLE("Collect Apple"),
-    COLLECT_STAR("Collect Star"),
-    GAME_TIME("Game Time"),
+    COLLECTION("Collection"),
+    GAME_TIME("Survival"),
     LENGTH("Length"),
     SPECIAL("Special");
 

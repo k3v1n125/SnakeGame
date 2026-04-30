@@ -12,27 +12,21 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import org.example.Achievement.AchievementManager;
-import org.example.HighScore.HighScore;
 import org.example.HighScore.HighScoreManager;
 
 public class GameStats extends JPanel {
     private static final int WIDTH  = 220;
-    private static final int BASE_HEIGHT = 250;
-    private static final int STAR_UNLOCKED_HEIGHT = 300;
+    private static final int HEIGHT = 200;
     private static final int LINE_HEIGHT = 25;
     private static final int START_Y = 50;
     private static final int LABEL_X = 15;
     private static final int VALUE_X = 175;
 
-    private static final String STAR_NOT_UNLOCK = "Collect 5 apples to unlock stars";
-    private static final String PINEAPPLE_NOT_UNLOCK = "Collect 25 stars to unlock pineapples";
-
     private int snakeLength;
     private int applesCollected;
     private int starCollected;
     private int pineappleCollected;
-    private int extraLife = 0;
-    private int extraLifeUsed = 0;
+    private int live;
 
     private Instant startTime;
     private long gameTime;
@@ -55,12 +49,12 @@ public class GameStats extends JPanel {
         this.applesCollected = 0;
         this.starCollected = 0;
         this.pineappleCollected = 0;
-        this.extraLife = 0;
+        this.live = 1;
         this.gameTime = 0;
         this.achievementManager = achievementManager;
         this.highScoreManager = highScoreManager;
         setBackground(Color.BLACK);
-        setPreferredSize(new Dimension(WIDTH, BASE_HEIGHT));
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
     }
 
     private void updatePreferredHeight() {
@@ -70,8 +64,7 @@ public class GameStats extends JPanel {
         }
 
         starSectionUnlocked = shouldShowStarSection;
-        int height = starSectionUnlocked ? STAR_UNLOCKED_HEIGHT : BASE_HEIGHT;
-        setPreferredSize(new Dimension(WIDTH, height));
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
         revalidate();
 
         java.awt.Window window = SwingUtilities.getWindowAncestor(this);
@@ -100,12 +93,12 @@ public class GameStats extends JPanel {
         return applesCollected;
     }
 
-    public int getExtraLife() {
-        return extraLife;
+    public int getLives() {
+        return live;
     }
 
-    public void decreaseExtraLife() {
-        extraLifeUsed = extraLifeUsed + 1;
+    public void decreaseLives() {
+        live = live - 1;
     }
 
     public void increaseSnakeLength() {
@@ -125,6 +118,9 @@ public class GameStats extends JPanel {
 
     public void increaseStarCollected() {
         starCollected = starCollected + 1;
+        if (starCollected % 5 ==0) {
+            live = live + 1;
+        }
         achievementManager.onStarCollected();
     }
 
@@ -188,7 +184,6 @@ public class GameStats extends JPanel {
     }
 
     public void updateStats() {
-        extraLife = (starCollected / 5) - extraLifeUsed;
         Duration gameDuration = Duration.between(startTime, Instant.now()).minus(totalPausedDuration);
         gameTime = gameDuration.toSeconds();
         repaint();
@@ -214,12 +209,22 @@ public class GameStats extends JPanel {
         //stats
         g.setFont(labelFont);
 
+        String starText = "Locked";
+        if (applesCollected >= 5) {
+            starText = String.valueOf(starCollected);
+        }
+
+        String pineappleText = "Locked";
+        if (starCollected >= 25) {
+            pineappleText = String.valueOf(pineappleCollected);
+        }
+
         String[][] rows = {
             { "Snake Length:", String.valueOf(snakeLength) },
             { "Apples Collected:", String.valueOf(applesCollected) },
-            { "Stars Collected:", String.valueOf(starCollected) },
-            { "Pineapples Collected:", String.valueOf(pineappleCollected) },
-            { "Extra Lives:", String.valueOf(extraLife) },
+            { "Stars Collected:", starText },
+            { "Pineapples Collected:", pineappleText },
+            { "Lives:", String.valueOf(live) },
             { "Duration:", gameTime + "s" }
         };
 
@@ -227,43 +232,11 @@ public class GameStats extends JPanel {
         for (int i = 0; i < rows.length; i++) {
             int y = START_Y + lines * LINE_HEIGHT;
             g.setColor(Color.LIGHT_GRAY);
-            if ((i == 2 || i == 4) && applesCollected < 5) {
-                continue;
-            }
-            if (i == 3 && starCollected < 25) {
-                continue;
-            }
             g.drawString(rows[i][0], LABEL_X, y);   // label
             g.setColor(Color.GREEN);
             g.drawString(rows[i][1], VALUE_X, y);   // value
             lines = lines + 1;
         }
-        if (applesCollected < 5) {
-            g.setColor(Color.YELLOW);
-            g.drawString(STAR_NOT_UNLOCK, LABEL_X, START_Y + lines * LINE_HEIGHT);
-            lines = lines + 1;
-        }
-        if (applesCollected >= 5 && starCollected < 25) {
-            g.setColor(Color.YELLOW);
-            g.drawString(PINEAPPLE_NOT_UNLOCK, LABEL_X, START_Y + lines * LINE_HEIGHT);
-            lines = lines + 1;
-        }
 
-        // High score section
-        int y = START_Y + lines * LINE_HEIGHT;
-        g.setColor(Color.YELLOW);
-        g.drawString("── Best ──", LABEL_X, y);
-
-        HighScore hs = highScoreManager.getRecord();
-
-        g.setColor(Color.LIGHT_GRAY);
-        g.drawString("Best Apples:", LABEL_X, y += LINE_HEIGHT);
-        g.setColor(Color.GREEN);
-        g.drawString(String.valueOf(hs.getBestApples()), VALUE_X, y);
-
-        g.setColor(Color.LIGHT_GRAY);
-        g.drawString("Longest Time Played:", LABEL_X, y += LINE_HEIGHT);
-        g.setColor(Color.GREEN);
-        g.drawString(String.valueOf(hs.getBestSurvivalSeconds()), VALUE_X, y);
     }
 }

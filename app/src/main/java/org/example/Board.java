@@ -13,7 +13,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -32,11 +34,19 @@ import org.example.StatsBoard.StatsBoard;
 
 public class Board extends JPanel implements ActionListener {
 
+    private enum Direction {
+        LEFT,
+        RIGHT,
+        UP,
+        DOWN
+    }
+
     private final int B_WIDTH = 600;
     private final int B_HEIGHT = 600;
     private final int DOT_SIZE = 20;
     private final int ALL_DOTS = 900;
     private final int DELAY = 140;
+    private final int BORDER_THICKNESS = 3;
 
     private final int x[] = new int[ALL_DOTS];
     private final int y[] = new int[ALL_DOTS];
@@ -50,6 +60,8 @@ public class Board extends JPanel implements ActionListener {
     private boolean rightDirection = true;
     private boolean upDirection = false;
     private boolean downDirection = false;
+    private Direction currentDirection = Direction.RIGHT;
+    private final Deque<Direction> directionQueue = new ArrayDeque<>();
     private boolean inGame = true;
     private boolean gameWon = false;
 
@@ -57,7 +69,6 @@ public class Board extends JPanel implements ActionListener {
     private Image dot;
     private Image head;
 
-    private boolean moved = false;
     private boolean paused = false;
 
     private int newAppleIntroduced = 0;
@@ -119,62 +130,57 @@ public class Board extends JPanel implements ActionListener {
     }
     
     private void doDrawing(Graphics g) {
-        if (inGame) {
-            for (Item item : items) {
-                item.draw(g, this);
-            }
+        for (Item item : items) {
+            item.draw(g, this);
+        }
 
-            for (int z = 0; z < statsBoard.getSnakeLength(); z++) {
-                if (z == 0) {
-                    g.drawImage(head, x[z], y[z], DOT_SIZE, DOT_SIZE, this);
-                } else {
-                    g.drawImage(dot, x[z], y[z], DOT_SIZE, DOT_SIZE, this);
-                }
+        for (int z = 0; z < statsBoard.getSnakeLength(); z++) {
+            if (z == 0) {
+                g.drawImage(head, x[z], y[z], DOT_SIZE, DOT_SIZE, this);
+            } else {
+                g.drawImage(dot, x[z], y[z], DOT_SIZE, DOT_SIZE, this);
             }
+        }
 
-            if (paused) {
-                String msg = "PAUSED";
-                Font font = new Font("Helvetica", Font.BOLD, 50);
-                FontMetrics metr = getFontMetrics(font);
-                g.setColor(Color.WHITE);
-                g.setFont(font);
-                g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
-            }
+        if (paused && inGame) {
+            String msg = "PAUSED";
+            Font font = new Font("Helvetica", Font.BOLD, 50);
+            FontMetrics metr = getFontMetrics(font);
+            g.setColor(Color.WHITE);
+            g.setFont(font);
+            g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
+        }
 
-            Toolkit.getDefaultToolkit().sync();
-        } else {
+        if (!inGame) {
             drawEndStatus(g);
         }
+
+        g.setColor(Color.GREEN);
+        for (int i = 0; i < BORDER_THICKNESS; i++) {
+            g.drawRect(i, i, B_WIDTH - 1 - (2 * i), B_HEIGHT - 1 - (2 * i));
+        }
+
+        Toolkit.getDefaultToolkit().sync();
     }
 
     private void drawEndStatus(Graphics g) {
-        long duration = statsBoard.getGameTime();
-        long gameMinutes = duration / 60;
-        long gameSeconds = duration % 60;
-        String durationMsg = gameSeconds + "s";
-        if (gameMinutes >= 1) {
-            durationMsg = gameMinutes + "m " + gameSeconds + "s";
-        }
-        int appleCollected = statsBoard.getAppleCollected();
-        int starCollected = statsBoard.getStarCollected();
-        
-        String msg1 = gameWon ? "You Win" : "Game Over";
-        String msg2 = "Duration: " + durationMsg;
-        String msg3 = "Apples collected: " + appleCollected;
-        String msg4 = "Stars collected: " + starCollected;
-        String msg5 = "Click shift to restart or esc to exit";
+        String message = gameWon ? "You Win" : "Game Over";
+        String hint = "Click shift to restart or esc to exit";
 
-        Font small = new Font("Helvetica", Font.BOLD, 28);
-        FontMetrics metr = getFontMetrics(small);
+        g.setColor(new Color(0, 0, 0, 140));
+        g.fillRect(0, 0, B_WIDTH, B_HEIGHT);
 
-        g.setColor(Color.white);
-        g.setFont(small);
-        g.drawString(msg1, (B_WIDTH - metr.stringWidth(msg1)) / 2, B_HEIGHT / 2 - 56);
-        g.drawLine(50, B_HEIGHT / 2 - 52, B_WIDTH - 50, B_HEIGHT / 2 - 52);
-        g.drawString(msg2, (B_WIDTH - metr.stringWidth(msg2)) / 2, B_HEIGHT / 2 - 28);
-        g.drawString(msg3, (B_WIDTH - metr.stringWidth(msg3)) / 2, B_HEIGHT / 2);
-        g.drawString(msg4, (B_WIDTH - metr.stringWidth(msg4)) / 2, B_HEIGHT / 2 + 28);
-        g.drawString(msg5, (B_WIDTH - metr.stringWidth(msg5)) / 2, B_HEIGHT / 2 + 56);
+        Font titleFont = new Font("Helvetica", Font.BOLD, 48);
+        Font hintFont = new Font("Helvetica", Font.BOLD, 22);
+        FontMetrics titleMetrics = getFontMetrics(titleFont);
+        FontMetrics hintMetrics = getFontMetrics(hintFont);
+
+        g.setColor(Color.WHITE);
+        g.setFont(titleFont);
+        g.drawString(message, (B_WIDTH - titleMetrics.stringWidth(message)) / 2, B_HEIGHT / 2 - 20);
+
+        g.setFont(hintFont);
+        g.drawString(hint, (B_WIDTH - hintMetrics.stringWidth(hint)) / 2, B_HEIGHT / 2 + 24);
     }
 
     private void finishGame(boolean won) {
@@ -184,7 +190,6 @@ public class Board extends JPanel implements ActionListener {
         if (statsBoard != null) {
             statsBoard.getGameStats().gameEnded();
             statsBoard.checkHighScore();
-            statsBoard.dispose();
         }
     }
 
@@ -291,7 +296,6 @@ public class Board extends JPanel implements ActionListener {
         items.removeAll(removedItems);
 
         if (isWinningState()) {
-            items.clear();
             statsBoard.gameWon();
             finishGame(true);
             return;
@@ -337,7 +341,6 @@ public class Board extends JPanel implements ActionListener {
             }
         }
         if (!inGame) {
-            items.removeAll(removeItems);
             return;
         }
         if (!removeItems.isEmpty()) {
@@ -368,12 +371,61 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 
+    private boolean isOpposite(Direction first, Direction second) {
+        return (first == Direction.LEFT && second == Direction.RIGHT)
+                || (first == Direction.RIGHT && second == Direction.LEFT)
+                || (first == Direction.UP && second == Direction.DOWN)
+                || (first == Direction.DOWN && second == Direction.UP);
+    }
+
+    private void applyDirection(Direction direction) {
+        leftDirection = direction == Direction.LEFT;
+        rightDirection = direction == Direction.RIGHT;
+        upDirection = direction == Direction.UP;
+        downDirection = direction == Direction.DOWN;
+        currentDirection = direction;
+    }
+
+    private boolean enqueueDirection(Direction direction) {
+        if (directionQueue.size() >= 3) {
+            return false;
+        }
+        Direction referenceDirection = directionQueue.isEmpty() ? currentDirection : directionQueue.peekLast();
+        if (direction == referenceDirection || isOpposite(referenceDirection, direction)) {
+            return false;
+        }
+        directionQueue.offerLast(direction);
+        return true;
+    }
+
+    private boolean enqueueDirectionFromKey(int key) {
+        if (key == KeyEvent.VK_LEFT) {
+            return enqueueDirection(Direction.LEFT);
+        }
+        if (key == KeyEvent.VK_RIGHT) {
+            return enqueueDirection(Direction.RIGHT);
+        }
+        if (key == KeyEvent.VK_UP) {
+            return enqueueDirection(Direction.UP);
+        }
+        if (key == KeyEvent.VK_DOWN) {
+            return enqueueDirection(Direction.DOWN);
+        }
+        return false;
+    }
+
+    private void applyNextQueuedDirection() {
+        if (!directionQueue.isEmpty()) {
+            applyDirection(directionQueue.pollFirst());
+        }
+    }
+
     private void checkCollision() {
         for (int z = statsBoard.getSnakeLength(); z > 0; z--) {
 
             if ((x[0] == x[z]) && (y[0] == y[z])) {
-                if (statsBoard.getExtraLife() >= 1) {
-                    statsBoard.decreaseExtraLife();
+                if (statsBoard.getLives() >= 1) {
+                    statsBoard.decreaseLives();
                 } else {
                     finishGame(false);
                 }
@@ -432,11 +484,11 @@ public class Board extends JPanel implements ActionListener {
                 checkCollision();
             }
             if (inGame) {
+                applyNextQueuedDirection();
                 move();
                 statsBoard.checkStats();
                 notifyStatsListener();
             }
-            moved = false;
         }
 
         repaint();
@@ -479,48 +531,9 @@ public class Board extends JPanel implements ActionListener {
                 return;
             }
 
-            if (moved) {
-                return;
-            }
-
-            if ((key == KeyEvent.VK_LEFT) && (!rightDirection) && (!leftDirection)) {
-                leftDirection = true;
-                upDirection = false;
-                downDirection = false;
-                if (paused) {
+            boolean queuedDirection = enqueueDirectionFromKey(key);
+            if (queuedDirection && paused) {
                     resume();
-                }
-                moved = true;
-            }
-
-            if ((key == KeyEvent.VK_RIGHT) && (!leftDirection) && (!rightDirection)) {
-                rightDirection = true;
-                upDirection = false;
-                downDirection = false;
-                if (paused) {
-                    resume();
-                }
-                moved = true;
-            }
-
-            if ((key == KeyEvent.VK_UP) && (!downDirection) && (!upDirection)) {
-                upDirection = true;
-                rightDirection = false;
-                leftDirection = false;
-                if (paused) {
-                    resume();
-                }
-                moved = true;
-            }
-
-            if ((key == KeyEvent.VK_DOWN) && (!upDirection) && (!downDirection)) {
-                downDirection = true;
-                rightDirection = false;
-                leftDirection = false;
-                if (paused) {
-                    resume();
-                }
-                moved = true;
             }
         }
     }

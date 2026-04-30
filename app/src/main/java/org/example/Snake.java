@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 import org.example.Achievement.AchievementBoard;
 import org.example.Achievement.AchievementManager;
+import org.example.HighScore.HighScoreBoard;
 import org.example.HighScore.HighScoreManager;
 import org.example.StatsBoard.GameStats;
 import org.example.StatsBoard.StatsBoard;
@@ -27,6 +28,7 @@ public class Snake extends JFrame {
 
         GameStats gameStats = new GameStats(startTime, achievementManager, highScoreManager);
         StatsBoard statsBoard = new StatsBoard(gameStats);
+        HighScoreBoard highScoreBoard = new HighScoreBoard(highScoreManager);
         AchievementBoard achievementBoard = new AchievementBoard(achievementManager);
         Board board = new Board(this, statsBoard);
 
@@ -45,6 +47,12 @@ public class Snake extends JFrame {
             getY()
         );
         statsBoard.setVisible(true);
+
+        highScoreBoard.setLocation(
+            statsBoard.getX(),
+            statsBoard.getY() + statsBoard.getHeight()
+        );
+        highScoreBoard.setVisible(true);
 
         achievementBoard.setLocation(
             getX() - getWidth() / 2,

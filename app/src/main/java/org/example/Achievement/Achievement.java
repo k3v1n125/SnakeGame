@@ -1,12 +1,12 @@
 package org.example.Achievement;
 
 public enum Achievement {
-    FIRST_APPLE ("First Bite", "Collect your first apple", AchievementCategory.COLLECT_APPLE),
-    TEN_APPLES ("Apple Hoarder", "Collect 10 apples in one game", AchievementCategory.COLLECT_APPLE),
-    TWENTY_APPLES ("Glutton", "Collect 20 apples in one game", AchievementCategory.COLLECT_APPLE),
-    SPEED_DEMON ("Speed Demon", "Collect an apple in under 2 seconds", AchievementCategory.COLLECT_APPLE),
-    PERFECTIONIST ("Perfectionist", "Collect 5 apples without missing one", AchievementCategory.COLLECT_APPLE),
-    STAR_KEEPER ("Star Keeper", "Collect 5 stars without letting any disappear", AchievementCategory.COLLECT_STAR),
+    FIRST_APPLE ("First Bite", "Collect your first apple", AchievementCategory.COLLECTION),
+    TEN_APPLES ("Apple Hoarder", "Collect 10 apples in one game", AchievementCategory.COLLECTION),
+    TWENTY_APPLES ("Glutton", "Collect 20 apples in one game", AchievementCategory.COLLECTION),
+    SPEED_DEMON ("Speed Demon", "Collect an apple in under 2 seconds", AchievementCategory.COLLECTION),
+    PERFECTIONIST ("Perfectionist", "Collect 5 apples without missing one", AchievementCategory.COLLECTION),
+    STAR_KEEPER ("Star Keeper", "Collect 5 stars without letting any disappear", AchievementCategory.COLLECTION),
     SURVIVE_30 ("Survivor", "Survive for 30 seconds", AchievementCategory.GAME_TIME),
     SURVIVE_60 ("Veteran", "Survive for 60 seconds", AchievementCategory.GAME_TIME),
     SURVIVE_120 ("Legend", "Survive for 120 seconds", AchievementCategory.GAME_TIME),
