@@ -8,6 +8,7 @@ build
 .kotlin
 
 app/saves
+saves
 
 .DS_Store
 .vscode
