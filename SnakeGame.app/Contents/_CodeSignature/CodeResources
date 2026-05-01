@@ -22,7 +22,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			27QyG/x3Oed4858IG2IJvfjFwIB7nQ95xWQDWd3BIRg=
+			Wv1+tX6cvlgjPmt3bc8jbGeOEJKlqhAvrLUUGtaH29I=
 			</data>
 		</dict>
 		<key>app/SnakeGame.cfg</key>
@@ -36,7 +36,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			umZj7uLCVWDs+4tkpNDkz6C6hd6K6ToXFca6d8IfY7I=
+			s61OKp/1hJUo4llzdIeGg8c/jVwoavTj733zCZYVfTU=
 			</data>
 		</dict>
 		<key>app/error_prone_annotations-2.41.0.jar</key>
@@ -81,25 +81,11 @@
 			s3KgN9QjCqV/vv/e8w/WEj+cDC24XQrO0AyRuXTzP5k=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/conf/jaxp-strict.properties.template</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			PMm4djN2lBSyLCTJfs3tihXfYw/lqxKryiOY2I4xsys=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/conf/jaxp.properties</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			1PRQUqEA5a7wK2Y4o7nGmyvdRhVc61ilJnHl1ZTDAQA=
-			</data>
-		</dict>
 		<key>runtime/Contents/Home/conf/logging.properties</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hZBjPh6KfYj/50zAQYnFxhse1HAxgMvIUdzVV178znQ=
+			ti0nM6uZVWsQihlR2JTFqNdrGsegDALDiPnrm+BGxW8=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/conf/management/jmxremote.access</key>
@@ -120,21 +106,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			deYDJ1MdNNHOXrUH21JxGh2Sa5x30U1rOjktdHEFSI0=
+			+ACW7AKNy3FiXDmOwW0SAjyvxqHAVazq7QfQLo1W9jc=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/conf/net.properties</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8Ak5BoIMMOB5y/eb10TXYarzKukXWYx85x+sfq4W+G0=
+			LgcO0dlwUvDOh3HtLvdKONfCYKRf3no2gsiETl/fWKQ=
+			</data>
+		</dict>
+		<key>runtime/Contents/Home/conf/security/java.policy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			EiTBG2kDLIDhSTQWZByCo35ViROkH5Wfg6svlvCX1sA=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/conf/security/java.security</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/wnZN494A0lF/RWkPTvYJQHfSrwgvRRorS6iccJWNsE=
+			rhn0lP/CO9GjpD6aAJ9s6ryROcQsY9V0emAhVtCnbmA=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/conf/security/policy/README.txt</key>
@@ -186,18 +179,25 @@
 			KZwjYLYVXrKJkOxJzSF1P5fkNEL+j6sD4E8+IT30OmY=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.base/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.base/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qZrxZF7+OBx7q3lrtAHXiAnNW3ETk1RUWL/uhQYmJtY=
+			ppvOJ1uno1cK9lecsPVWgs11/t/NSeDo6QIicMRHyRY=
+			</data>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.base/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pE63tcr1U0xu9TayHttAtNa6v5G/l9nUVZaGhhiyxvs=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.base/LICENSE</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TRVu7L9spGLYz3clUv/4dLFn+H3vlWaDf7jk+zR/KaU=
+			S5q+vEM4BIp8LcGE6fgA3rNJNmvfKOsjwmd6d7TIdyY=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.base/aes.md</key>
@@ -205,6 +205,13 @@
 			<key>hash2</key>
 			<data>
 			RcbU2kgyXt+/89z3HHBOUEwFeQRDXtI8bVcEbVUetp0=
+			</data>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.base/asm.md</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			H/kSdA6E4CRxHe9fpIL/u0bv9kVZdgxGc1Lfp8OaMwc=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.base/c-libutl.md</key>
@@ -218,21 +225,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ry40HDbvwRNoYO16ZGGir0pTrpXVXREmcmNA9bpisGo=
+			8r0z3tVQoF1Z6PZZQW7zgkkFBFSNhG5jiLHf/Sc6oHc=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.base/icu.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			viOtIKgjHSJBs3/PQBVI/r2Fl96Dc/iSaIggIMt8iBg=
+			rwBX6FU5Bgg/acL7n+ntSui8I0CgseN2pCRwLwAwCyk=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.base/public_suffix.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hh3h5JkqfSjx3iXHPNUNJqlHeevXScBkP+z6VkQsNCk=
+			VL2OuqUbUwsTCC2ihFeuGI92zGSXdgfgvGHgqxHNeqc=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.base/siphash.md</key>
@@ -246,40 +253,55 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UZTWdg8ufszAeAQZbMYZ+E5zD6nRDAUptxQWGG9NEtw=
+			Xk5mI6IaY/m8FupUr0EzuAOOSQwNSZp0Z2+eWmG5xbI=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.base/zlib.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gJtiumSOAjAvfZ6mtohsENUlOshq1SgDilDHPq2l/OI=
+			yccMNqHwMl6HiHcZBiAtQrpqtCBcrKROwPZlcH6DIms=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.compiler/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.compiler/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.compiler/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.compiler/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.datatransfer/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.datatransfer/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.datatransfer/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.datatransfer/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.desktop/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.desktop/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.desktop/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.desktop/LICENSE</key>
 		<dict>
@@ -297,42 +319,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dzROz3dlZt2TpP0aw1lZho3KqOCRttDR1e36wh82i68=
+			gbOAlZ+tJtZpKMD0VHwv4lkU5vK8qyZJcbMmHD++4cU=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.desktop/giflib.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KrtOqCH9cL/mImmRPUhydmdIUzvl3D3ojRXff/bPsL8=
+			T9/Gj4xeRh7omc7IUSkMxxPhdnOgRm9GlzF4hm3cntA=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.desktop/harfbuzz.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			s/MnqLNtVr6xUrP9G7Wn8kU2LL6hI+u8aPiQf3QbVSo=
+			kFDGDOmgwrIS50a/Wz64zLBk0sQad6x7aBs6brIswwQ=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.desktop/jpeg.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wd+5cZpxrZ+GH4coVQVC1oHiXI70DmOTYG5uKgwdZTo=
+			WAvlliFu4R4lVLJM6USXOsrt4uv1/7o0pr2MxEHAUEM=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.desktop/lcms.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			P+p8HYbuCVX0s5Efnt/ARSAIExcn5iGSVe/dPMEQlb4=
+			/B1/YMfNyWtcra/U82EManTy0K+giFIDaSnHoUdOurY=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.desktop/libpng.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Y2ZQ/2Ve1eVL3XdpALXlTTEU9qI2zlJxxZS7GsNjP0I=
+			RuVbncnMJb/T/yu21IubnKobj4XmlHNjDsW0HSKvw8I=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.desktop/mesa3d.md</key>
@@ -356,120 +378,180 @@
 			HU/6k8h/NQhLAqeqkKIQhLQBnbT+EAPC5c53W0o4T1k=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.instrument/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.instrument/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.instrument/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.instrument/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.logging/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.logging/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.logging/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.logging/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.management.rmi/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.management.rmi/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.management.rmi/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.management.rmi/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.management/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.management/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.management/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.management/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.naming/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.naming/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.naming/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.naming/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.net.http/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.net.http/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.net.http/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.net.http/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.prefs/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.prefs/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.prefs/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.prefs/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.rmi/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.rmi/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.rmi/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.rmi/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.scripting/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.scripting/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.scripting/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.scripting/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.security.jgss/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.security.jgss/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.security.jgss/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.security.jgss/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.security.sasl/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.security.sasl/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.security.sasl/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.security.sasl/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.smartcardio/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.smartcardio/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.smartcardio/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.smartcardio/LICENSE</key>
 		<dict>
@@ -480,43 +562,63 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OtTIn1Hgx5FwpuXqquFCnbJXRdvlqE/GGATK7sL+xU8=
+			s5zjY8KB7TbpN/nmwDMR19vwsg02FN3ghBMMKhCQlpI=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.sql.rowset/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.sql.rowset/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.sql.rowset/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.sql.rowset/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.sql/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.sql/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.sql/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.sql/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.transaction.xa/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.transaction.xa/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.transaction.xa/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.transaction.xa/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.xml.crypto/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.xml.crypto/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.xml.crypto/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.xml.crypto/LICENSE</key>
 		<dict>
@@ -530,10 +632,15 @@
 			0IaQ0l9mDxRcczZdJg7VIs0KrOig4TlnBlUbehroyaM=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.xml/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/java.xml/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/java.xml/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.xml/LICENSE</key>
 		<dict>
@@ -561,110 +668,133 @@
 			jV3P31BFWjw0x1OpjyHpUySK8gBBWpCE4/ECy2xDuL8=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.xml/schema10part1.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			siD4keW/o6pLKks036tTopFVPCrg/QsVpMsRFtTpd3A=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/legal/java.xml/schema10part2.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			I1DjXpGGbV7lvX7nwwOz5CS7yjNdNscUUliKrElOqj4=
-			</data>
-		</dict>
 		<key>runtime/Contents/Home/legal/java.xml/xalan.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ar0BP8P0ONu4+kH6V4iBd+AV76ZDHTf85ueUxvNTpqE=
+			6mcia+XP4Zx+eXJcLCShZnYyMmTWn5dHxSjeC0RUGwM=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/java.xml/xerces.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Smv2s2cZPuaGgcstn+0w/8XWLdLUd71i4CcXB9cbMkQ=
+			RyIk+Z3oM/T0wZ8vigMX8iEU4cZB9dd/+jpCgKG4AXY=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/java.xml/xhtml10.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			mlzeRwc8qAz1kSeJFCD0rtYD62UHBzitAnuxnnb7kxk=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/legal/java.xml/xhtml10schema.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			e8UdiEqq5u8nVR7njUBLoxFjVnkNo9BrZlZ56y4cwAI=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/legal/java.xml/xhtml11.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			T5mjkIlvD1Wgt4N23om/0qyEVxPeheZ+N/iEt34MMSI=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/legal/java.xml/xhtml11schema.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			jNabE5LihlOACPTLAD+Fyuo6N1xhnml4E9ggtphXz3Q=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/legal/java.xml/xmlspec.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			r+wmO/XcZ2l+4zc07iQ/hqh4FhM172KYJz5AQWc7BUQ=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/legal/java.xml/xmlxsd.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			SYpf7GNQmo85SZg7toeKxclarx1eNnknLZMxQ3GqAhE=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/legal/jdk.accessibility/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.accessibility/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.accessibility/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.accessibility/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.attach/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.attach/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.attach/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.attach/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.compiler/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.charsets/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.charsets/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.charsets/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.compiler/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.compiler/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.compiler/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.dynalink/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.crypto.cryptoki/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.crypto.cryptoki/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.crypto.cryptoki/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.crypto.cryptoki/pkcs11cryptotoken.md</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Hzb/E0KlgRQshY+QBk4gYz1DUprIKtuFNFvZAqFOGLI=
+			</data>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.crypto.cryptoki/pkcs11wrapper.md</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Nxl0sfyjdEo4ksfuH8xZO4tCgfwhj0yv0vcJ6d9f2B0=
+			</data>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.crypto.ec/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.crypto.ec/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.crypto.ec/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.dynalink/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.dynalink/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.dynalink/LICENSE</key>
 		<dict>
@@ -678,50 +808,105 @@
 			FzElkcq+4+9sNO2Il9kuTjYbqc6kHsANzWGjIqj8LNs=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.httpserver/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.editpad/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.editpad/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.editpad/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.httpserver/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.httpserver/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.httpserver/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.incubator.vector/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.incubator.foreign/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.incubator.foreign/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.incubator.foreign/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.incubator.vector/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.incubator.vector/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.incubator.vector/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.internal.ed/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.internal.ed/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.internal.ed/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.internal.ed/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.internal.jvmstat/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.internal.jvmstat/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.internal.jvmstat/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.internal.jvmstat/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.internal.le/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.internal.le/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.internal.le/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.internal.le/LICENSE</key>
 		<dict>
@@ -732,30 +917,18 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pvtjoia3ewPL11WczmzcPh6oVjr5YLHc4jMMjh3OGr8=
+			rrZNYKgFZOgRh5n7ALlNZobB/gTaL3OZ+XD5aNMrz4Q=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.internal.md/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.internal.opt/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.internal.md/LICENSE</key>
+		<key>runtime/Contents/Home/legal/jdk.internal.opt/ASSEMBLY_EXCEPTION</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/LICENSE</string>
-		</dict>
-		<key>runtime/Contents/Home/legal/jdk.internal.md/commonmark.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			I6bwghixO22+FkENERBNVtFIYTFt06Bk4fvVBUtvRww=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/legal/jdk.internal.opt/COPYRIGHT</key>
-		<dict>
-			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.internal.opt/LICENSE</key>
 		<dict>
@@ -769,49 +942,35 @@
 			mbxn+Tz1fW0g5gR3Mck/uyZ9cPvdQRXRGeD4XG7+XAU=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.internal.vm.ci/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.jartool/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.internal.vm.ci/LICENSE</key>
+		<key>runtime/Contents/Home/legal/jdk.jartool/ASSEMBLY_EXCEPTION</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/LICENSE</string>
-		</dict>
-		<key>runtime/Contents/Home/legal/jdk.jartool/COPYRIGHT</key>
-		<dict>
-			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.jartool/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.javadoc/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.javadoc/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.javadoc/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.javadoc/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
-		</dict>
-		<key>runtime/Contents/Home/legal/jdk.javadoc/dejavufonts.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			vOxVkTyJgiqCkq9Ol6Wtegeqkg28SVJEOf98cGON0eg=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/legal/jdk.javadoc/highlightjs.md</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			PhU+z0EXnTGRbR5HjkMlQd+L5YJQYkyrOg53ybhy6Q0=
-			</data>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.javadoc/jquery.md</key>
 		<dict>
@@ -827,180 +986,402 @@
 			eFTS1WiZKuJf9lhnvZAh1lX3BnAULweWspo7BiHxlTA=
 			</data>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.jconsole/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.jconsole/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jconsole/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.jconsole/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.jdi/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.jdeps/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jdeps/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jdeps/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jdi/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jdi/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.jdi/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.jdwp.agent/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.jdwp.agent/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jdwp.agent/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.jdwp.agent/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.jfr/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.jfr/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jfr/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.jfr/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.jshell/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.jlink/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jlink/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jlink/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jpackage/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jpackage/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jpackage/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jshell/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jshell/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.jshell/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.jsobject/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.jsobject/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jsobject/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.jsobject/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.management.agent/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.jstatd/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jstatd/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.jstatd/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.localedata/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.localedata/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.localedata/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.localedata/cldr.md</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/cldr.md</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.localedata/thaidict.md</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wyYUSiNRyWCPpwi119PFo9oD6CtmR5sSjp20lpU5gko=
+			</data>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.management.agent/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.management.agent/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.management.agent/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.management.jfr/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.management.jfr/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.management.jfr/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.management.jfr/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.management/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.management/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.management/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.management/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.net/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.naming.dns/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.naming.dns/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.naming.dns/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.naming.rmi/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.naming.rmi/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.naming.rmi/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.net/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.net/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.net/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.nio.mapmode/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.nio.mapmode/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.nio.mapmode/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.nio.mapmode/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.sctp/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.random/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.random/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.random/LICENSE</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/LICENSE</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.sctp/ADDITIONAL_LICENSE_INFO</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.sctp/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.sctp/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.security.auth/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.security.auth/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.security.auth/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.security.auth/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.security.jgss/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.security.jgss/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.security.jgss/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.security.jgss/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.unsupported.desktop/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.unsupported.desktop/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.unsupported.desktop/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.unsupported.desktop/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.unsupported/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.unsupported/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.unsupported/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.unsupported/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.xml.dom/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.xml.dom/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.xml.dom/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.xml.dom/LICENSE</key>
 		<dict>
 			<key>symlink</key>
 			<string>../java.base/LICENSE</string>
 		</dict>
-		<key>runtime/Contents/Home/legal/jdk.zipfs/COPYRIGHT</key>
+		<key>runtime/Contents/Home/legal/jdk.zipfs/ADDITIONAL_LICENSE_INFO</key>
 		<dict>
 			<key>symlink</key>
-			<string>../java.base/COPYRIGHT</string>
+			<string>../java.base/ADDITIONAL_LICENSE_INFO</string>
+		</dict>
+		<key>runtime/Contents/Home/legal/jdk.zipfs/ASSEMBLY_EXCEPTION</key>
+		<dict>
+			<key>symlink</key>
+			<string>../java.base/ASSEMBLY_EXCEPTION</string>
 		</dict>
 		<key>runtime/Contents/Home/legal/jdk.zipfs/LICENSE</key>
 		<dict>
@@ -1011,14 +1392,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0ZVmbGFDsUO8CAII2KDnu8FnGERfIk0Mv93P05hqeqg=
+			fxabo3knQMld8G2VlfznrXCeiToVu9mMjNCl8qdtdTA=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/ct.sym</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gveStn2NVIuo1zWJ1F215dMeE60+Hc/ayhYi14Bbq1g=
+			pm1ByL0sT8tubjxNP/1kSYhB9FsesbbkO4t2ATUs9Jk=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/fontconfig.bfc</key>
@@ -1032,35 +1413,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vUGNDq8gzbrHkf0HXvS+6tfu/OQ35+46QVYPZeJkYlk=
+			yNIKSjkkBmUlIwa909vI1x4eJGyM2MeYWzLkEBZYoUg=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/jfr/default.jfc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JvLXvy+Ec7OEn5SAYp7uaV7fWf1mfag4iQoikZI3cYo=
+			UQmfB8va/oyeEulOp02xySw+GulQZ56/bTeptL5PdjQ=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/jfr/profile.jfc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PiyEdgix59GCM39Wu/dbagJrpOljSzmL2Srshl6eqKc=
+			naerccdjNEZ3yr6ImElrCq0ftC/kk2PV4a4A34obre0=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/jrt-fs.jar</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			N8JghedOrqVSTK8YuJO9pn2SrOfz2a1gFvOTLUAVFnw=
+			7Imxe31d2E2ArdfKAdW0uOlvTbkLSDthHIpTB6Xtn+Q=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/jspawnhelper</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LV+mb6TDZt59s48X9EvVRBb2rxtdHeEk0TnLG3gdKY4=
+			uW9jZnuJqQ70wdJJSZMPPsjtY/MnxG9Tt+E1vOuc6Lw=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/jvm.cfg</key>
@@ -1074,294 +1455,287 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			i7RVYO34Hv24doamCG9GoSlBDUOSQ7ihXRiPjHCAON8=
+			ww1lCE792T0Yd+BSv8NCYBbaRhRO3Tx3YuQSeb0nQuo=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libawt.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CQXcRVHcEQWtPAvkGA+4dflJH+f8AtjY5hreCRCtHew=
+			BIWPGlN1RPLl6JriBWGAWfTR7icY8AqmNXUsdfJW1K8=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libawt_lwawt.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Fj05VBKpSbkh/OEo/xn2FyU8Mr+HKT60An+zyQ/BdQ0=
+			fb+QFJt3gONeSJBAOgl7e5dyu/28RllIeSmmm+6Lw7s=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libdt_socket.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hZumMZKP4igEYvs+4+bRQb2uK++Kw2E/WOIORLKRRAA=
+			6lAm3l1bWaXnLEXSCexWYQ1hZeskycttPLyxvKRRjXE=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libextnet.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			n8c1Jss6immpU30St5tNVyUJ5h6IyWNsvGFSTYd64ug=
+			QqMIzUf8ejGFziU5MF97rOUdyXz4TfYvAC7o9Sg660g=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libfontmanager.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MpqvUmgjOjy/rhSI9PAG3WQRiLcK9Lw6VBg7WbvG1R4=
+			eoR2Bv76iiDCS2kx8zkdJNmXMi1zKeQiMsNPU5n3rFI=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libfreetype.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			n2FsfGJSZc9g7g4sqjwY022+KUsYDCeOQG0zINhcHno=
+			FgUCT/WOUIrVaCfUgaXT49Z/yl7k4g3hTCv3aEDwF+4=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libinstrument.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			s6hQq3w0RHEnLi2a0U0I9Hvz00dgoG+JsBNMa+ZYutw=
+			eeHKSKUsynKJ/YYc2TMkg1nmDRzJ/ylymdnZ6DlK/qc=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libj2gss.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/qSiuJGB9IKQMjdZeJc5g/V6pA3Ze6eoRKXngRzI/SM=
+			VlETvHon7J6lghSGYTsgLnmtelVgmRXLpWW0R5T/RkY=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libj2pcsc.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jPbObDisvaguLK7+oXsjJMjyLWE1tmeMPA3XPUjJYc4=
+			VyBEPgj66hw3Ih5O1Cl1FTt5vZdYFn29lVTGXMBO4MY=
+			</data>
+		</dict>
+		<key>runtime/Contents/Home/lib/libj2pkcs11.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			d/x+w7eVPtBfRcE/RDiPW+nEIqENNw31Ajj/FI8aGI8=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libjaas.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4pJ+iEXQtoXEuGVE3VUaQLDL3x/XdTuVKH7lEey4Cw8=
+			iHmbuht7mMUgxpTyVcD7/8Nhg2uftbrH3k9LfQNaoFE=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libjava.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mJxhMxEEtIfQVnE/iFHjnzxYh5HnfFTtoE+YCTC1Qzw=
+			paNdn2eoltE02IWHEYG/RmvjDHA3szzIhNrfX53dKe4=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libjavajpeg.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pbJHyhRkX2LLs38R51fWULwhFd+RWdxr8dc1esYlzJI=
+			9+ethxR00jrxQbwYBdCKybU6zVanTy0TcITPFLvfOU8=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libjawt.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xNBSlpcIiOLQXJUiT8iK7F+Dn4JWBqrG9WL1IPvu3BU=
+			sajhqgfH1mDx9/xqqIUXYW9dH5zDlwQKYwu4+5wl5z4=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libjdwp.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oHrESKjDIJJ2BvtJ3RpMF5YoO1913zDm/XG0KFOYuZU=
+			TNuIgREwVZV8Rr1lzB/2CEC6Pgucv0zSAFMCOMKMVMM=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libjimage.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pbBOZ+PvtBvikBG9KMbyCnIp09zF3/zzaCJViWRhUuI=
+			ZYpAY2YtEmGL7GGY1MQMpgEuHN2NgLLpOghSCuE3h2I=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libjli.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			N1vhFIGcU0WPZrVNrgiKSWS9zTCZhScuY197hUNBF1I=
+			RH+3yBvM+UQn+TRGZFXcAt37GJnnH4rVE9JMgbjzNbU=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libjsig.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lT9oX91wOXb8Ide5jrEvJecHNNrgOfOsL/kOE5Tgvw0=
+			GB7yD76lyS17z8cZyKImYJQlLZcuutvWBoe9LmANFTY=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libjsound.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mBHVh0TOgKLnhkgVF43eIXVGhG9ByKKcQ2dupytsljw=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/lib/libjvmcicompiler.dylib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			3FobODCxBZfTzidd2vvq22AlSgtuT6paRsCsT0Gy6Xo=
+			KDFzLieYU3+nq2/179IWTOiR0beiZb4LWpaOlMaFftc=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/liblcms.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6XcEgfp9/pwOuXZGiqItCGytQNkxcPTiRxITDP8Ao9E=
+			ka0S4IPW7u3cwrQ9K7f6wRIrmtaeb/xfRMHEbX+8/AA=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libmanagement.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HGZ0ixFhsAxOtjDnom4Pb3QgiThsxWd5gFcJH93xRQE=
+			PV4ZSYRTl+buCRQ9Iiu5YRwMVLsxbVa3CwMIcoB1Z1U=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libmanagement_agent.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			40QEoGs1MWWSgmnK2eQSuOE5/s5yqq9mtkVM925L3zI=
+			/fye2ztZ1ZvCRI6tORV7OZLWSO+9HjKVJhXAq9hYsiQ=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libmanagement_ext.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l06zcRxmsFMHlSLzGDuCoURO/WQ9BKzyI5hcTohwFC0=
+			8dvNFLRJ/U37tk2r5s5IynRgUkWaDNyau7Y0pePQhdE=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libmlib_image.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0XCs/BYVlLLGN/7Us7KyHDvugE47SoOLRMomMWpFNKo=
+			TbYl+KjT74r13oi3ZFxMxBudMOBiqiOM+zPo8z5JD7w=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libnet.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Zv9MnL6eyxxH8pLSu0PJRtjTFwJaGzYoKflv640UPjo=
+			L92dRxt85vmncJ6ShDycHiIO3MR7maaKcRvuGMYYy8M=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libnio.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			D7hfZn/TnFiGSEQVErPRVOFCLQOMd0xM73Hn5ncQ8a0=
+			xdMIaQ6H8/eqy6S/jq41H5To+tzIZEJPqV7rsjSBjck=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libosx.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RabvUoKs8dugYFffc1AmGo+Z5gqS8/SAi22aY6tSUpY=
+			3kCUuwOb8cbxeoW14EgdP+5klXPhZc4WqFmplMn156o=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libosxapp.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nwjVmMy1Tr3jusXctkXHnlzl/lBUPGGY8KFUaTedL5Q=
+			kYdL6VibHwyaDA98Z2Z74Q/iufKYxAMwec18FRZ5XXI=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libosxkrb5.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			q0qOOOn+lwypOYBpQvQCSSuuNUKcJiCVpAuLIqxx/54=
+			mTQgLD7bL0xDK0l+sVVk16VjKeG/+Knj1OxCJFsqh94=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libosxsecurity.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k3tU/nKPPBjzcHWRVA0b8z7AoxgB5kUGLYlVpPrdP5k=
+			srzDyItb9eg9ZDpvXSoR1EjpB/SjNJWSiddGZSMFprA=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libosxui.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pOVUlwqFYsOPYDYwstzv/ItycV92JTvAg/REvSQJiy8=
+			JNtwMhMPn+AGku7fSO6P/WBQkJosRQBucvDf1vVX1yg=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libprefs.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XadCEbzyyHn702LAKHjGs9xXZVQXUXtMNYcRPbcIsaE=
+			abopnMOVZLl9zxAXSTvchvzzoEd8jS6dkwktVm8ABe4=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/librmi.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6blkYUbxJ6Ear09wy0zNgR70qA9m48etmd1uneTsg+M=
-			</data>
-		</dict>
-		<key>runtime/Contents/Home/lib/libsleef.dylib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9oMKnvOTkZHCVX1sVv5qXK4rQfRSYYuVGB/pJHQdM3E=
+			w4JbtN/apnWF6nlQ9U1PMv7VrfFbMJ1LH9AUJP26Jxg=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libsplashscreen.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZGQxi/HQeXnH+Kfd4T0aMTHD27ErfVSjxL3HiDDURmY=
+			YtttpA7sbYN5T6gAWp5QNgG1ZvrJbNsc2ZI5hYQkAkw=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libsyslookup.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Brn6ynMC6hyqjayOuum1AMp0DEONqJjvp/+nGnswv8c=
+			VUnF+6eGf/mLOR+h97gi95pSnPrjZdJcdUiqWEHx8RI=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libverify.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3vYlpwSMRDRNXpRDLjaei5AEuz7XK3++DWE7Zg7ebTs=
+			pjJjNBG3BRaG6JqgHsQ/SucXW39AlzhKm8rr5iCBvuc=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/libzip.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FXjWw/JNpH+MitfB/oy3wIEwJWvpj7sGehjgZkrRq94=
+			wdHMIE5Uir2F8NeuCcuvsmRPah0q+uACDS7by0c90zs=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/modules</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DwT+xvGxDmmZnrU8+RFvVl1EuwlLWjtBfATv9tXhTi4=
+			H+NhVsnHm7/u96BynazunQNfArYzBNyyjGrYGHjORcc=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/psfont.properties.ja</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DHkN5pZTYWWRNoV4XqjL4axkrPCeLI2S2AIIOm2gk5M=
+			WkvVG5ab8Yf/htlPSnH9+/pgJ2KXX6PHPSZLRXX3x48=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/psfontj2d.properties</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			34/RT4kw+T8XT6bwj00dDpqjpg0X1MCADI/tpNRVDO0=
+			eAxWXVrz7m9ouIe3XAQc30agWS9nAS8S7raRKD6SYwo=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/security/blocked.certs</key>
@@ -1375,35 +1749,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cHMS0+gBiSj1PRCORTT2KMu/rRgZbfGi5yiEMAvhpp8=
+			uT2LtMK2bknMtAm/9yrBROKFVUbBwsWZ3+svD57+K7s=
+			</data>
+		</dict>
+		<key>runtime/Contents/Home/lib/security/default.policy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hNUFexLy7Waqp8ICel8GtGFBbu6HnB9NJC/xnaufQAw=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/security/public_suffix_list.dat</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FrQgAqpvg6d2PEzb05ns9zhGA3fUR+NiiESVVFr9YKM=
+			WjpXHMLgFv7hDCIQNs8dK1Lui6OSiO8gq+JmeCjKMLQ=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/server/libjsig.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lT9oX91wOXb8Ide5jrEvJecHNNrgOfOsL/kOE5Tgvw0=
+			GB7yD76lyS17z8cZyKImYJQlLZcuutvWBoe9LmANFTY=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/server/libjvm.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			F7ngXkcecS9HkJLwaZLvgeVAdtmf/vF9Dk78K3V32Tk=
+			+CIVgB07GVQ5W0iLBPs5m/pkSQOfA5q76a3TVO3gd9E=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/shaders.metallib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			U+nsD6yVFKX13xVeEjy9bAD2trac2awo4TeFvaqYWdw=
+			mSNpQETGLEv3dS98Dv5cPrb77zqvkyMbqt928x3b1do=
 			</data>
 		</dict>
 		<key>runtime/Contents/Home/lib/tzdb.dat</key>
@@ -1417,28 +1798,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vKhWQy58wbwIbcPQ6rRcdZVspL2BhcXHSeTR+oloIQ0=
+			GLZmUJPKEpPFcdT3wqXXrB9mAjpBgoAHEAv9PEiMWTE=
 			</data>
 		</dict>
 		<key>runtime/Contents/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			E90wUSzeHmsxK9xjW0XKrhnIin1rpmJ0+vALp7WMGBQ=
+			2ut2sk7m53oirif+h9kwAHvNq9WdNTgpo7R8B29Giwc=
 			</data>
 		</dict>
 		<key>runtime/Contents/MacOS/libjli.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			apOgQccKmjX8q6Y+88HAUA9uL3Z78nKn7nGliRiNmRs=
+			DH5KfGInhazpLVaT3Y8S5HEvQYqiqvbzDVcuqHU7Gss=
 			</data>
 		</dict>
 		<key>runtime/Contents/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YtBA8/vVO1209riPUSV28QxAkNMDj3a32SKZtNb4rWc=
+			Vi2veVYu94bIX1AESyQ9lBLhULEhPBwjwkAkrv3I7/g=
 			</data>
 		</dict>
 	</dict>

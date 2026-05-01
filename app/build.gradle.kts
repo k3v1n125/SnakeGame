@@ -11,6 +11,11 @@ plugins {
     id("org.graalvm.buildtools.native") version "0.11.1"
 }
 
+val targetJavaVersion = providers.gradleProperty("snakegame.javaVersion")
+    .orElse("17")
+    .map(String::toInt)
+    .get()
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -29,7 +34,7 @@ dependencies {
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
 }
 
@@ -56,6 +61,7 @@ tasks.named<Test>("test") {
 tasks.register<Exec>("bundleMacApp") {
     group = "distribution"
     description = "Builds a double-clickable macOS .app bundle using jpackage"
+    notCompatibleWithConfigurationCache("Uses custom task actions and ProcessBuilder calls that are not cache-serializable")
     dependsOn("jar")
 
     val appName = "SnakeGame"
@@ -64,9 +70,13 @@ tasks.register<Exec>("bundleMacApp") {
     val iconWorkDir = layout.buildDirectory.dir("jpackage/icon").get().asFile
     val appIconIcns = iconWorkDir.resolve("SnakeGame.icns")
     val appJar = tasks.named("jar").get().outputs.files.singleFile
+    val javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }.get()
+    val jpackageExecutable = javaLauncher.metadata.installationPath.file("bin/jpackage").asFile
 
     commandLine(
-        "jpackage",
+        jpackageExecutable.absolutePath,
         "--type", "app-image",
         "--name", appName,
         "--dest", packageOutputDir.absolutePath,

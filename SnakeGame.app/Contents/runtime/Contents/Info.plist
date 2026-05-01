@@ -7,11 +7,11 @@
         <key>CFBundleExecutable</key>
         <string>libjli.dylib</string>
         <key>CFBundleIdentifier</key>
-        <string>org.game</string>
+        <string>com.oracle.java.org.game</string>
         <key>CFBundleInfoDictionaryVersion</key>
         <string>7.0</string>
         <key>CFBundleName</key>
-        <string>SnakeGame</string>
+        <string>Java Runtime Image</string>
         <key>CFBundlePackageType</key>
         <string>BNDL</string>
         <key>CFBundleShortVersionString</key>
