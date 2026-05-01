@@ -16,6 +16,27 @@ val targetJavaVersion = providers.gradleProperty("snakegame.javaVersion")
     .map(String::toInt)
     .get()
 
+val jpackageExecutableOverride = providers.gradleProperty("snakegame.jpackageExecutable")
+val jpackageExecutableIntelOverride = providers.gradleProperty("snakegame.jpackageExecutableIntel")
+
+val toolchainJpackageExecutable = javaToolchains.launcherFor {
+    languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+}.map { launcher ->
+    launcher.metadata.installationPath.file("bin/jpackage").asFile
+}
+
+val defaultBundleJpackageExecutable = jpackageExecutableOverride
+    .map { path -> file(path) }
+    .orElse(toolchainJpackageExecutable)
+
+val defaultIntelJpackageExecutable = layout.projectDirectory
+    .file(".jdks/temurin17-x64/Contents/Home/bin/jpackage")
+    .asFile
+
+val intelBundleJpackageExecutable = jpackageExecutableIntelOverride
+    .map { path -> file(path) }
+    .orElse(defaultIntelJpackageExecutable)
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -58,109 +79,144 @@ tasks.named<Test>("test") {
     useJUnitPlatform()
 }
 
-tasks.register<Exec>("bundleMacApp") {
-    group = "distribution"
-    description = "Builds a double-clickable macOS .app bundle using jpackage"
-    notCompatibleWithConfigurationCache("Uses custom task actions and ProcessBuilder calls that are not cache-serializable")
-    dependsOn("jar")
+fun registerBundleMacAppTask(
+    taskName: String,
+    outputDirectoryName: String,
+    taskDescription: String,
+    jpackageExecutableProvider: Provider<File>
+) {
+    tasks.register<Exec>(taskName) {
+        group = "distribution"
+        description = taskDescription
+        notCompatibleWithConfigurationCache("Uses custom task actions and ProcessBuilder calls that are not cache-serializable")
+        dependsOn("jar")
 
-    val appName = "SnakeGame"
-    val packageInputDir = layout.buildDirectory.dir("jpackage/input").get().asFile
-    val packageOutputDir = layout.buildDirectory.dir("macos").get().asFile
-    val iconWorkDir = layout.buildDirectory.dir("jpackage/icon").get().asFile
-    val appIconIcns = iconWorkDir.resolve("SnakeGame.icns")
-    val appJar = tasks.named("jar").get().outputs.files.singleFile
-    val javaLauncher = javaToolchains.launcherFor {
-        languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-    }.get()
-    val jpackageExecutable = javaLauncher.metadata.installationPath.file("bin/jpackage").asFile
+        val appName = "SnakeGame"
+        val packageInputDir = layout.buildDirectory.dir("jpackage/input").get().asFile
+        val packageOutputDir = layout.buildDirectory.dir(outputDirectoryName).get().asFile
+        val iconWorkDir = layout.buildDirectory.dir("jpackage/icon").get().asFile
+        val appIconIcns = iconWorkDir.resolve("SnakeGame.icns")
+        val appJar = tasks.named("jar").get().outputs.files.singleFile
+        val jpackageExecutable = jpackageExecutableProvider.get()
 
-    commandLine(
-        jpackageExecutable.absolutePath,
-        "--type", "app-image",
-        "--name", appName,
-        "--dest", packageOutputDir.absolutePath,
-        "--input", packageInputDir.absolutePath,
-        "--main-jar", appJar.name,
-        "--main-class", application.mainClass.get(),
-        "--icon", appIconIcns.absolutePath,
-        "--app-version", "1.0",
-        "--vendor", "SnakeGame"
-    )
-
-    doFirst {
-        val sourcePng = rootProject.file("icon.png")
-        if (!sourcePng.exists()) {
-            throw GradleException("App icon not found at ${sourcePng.absolutePath}")
-        }
-
-        delete(iconWorkDir)
-        iconWorkDir.mkdirs()
-        val iconSetDir = iconWorkDir.resolve("SnakeGame.iconset")
-        iconSetDir.mkdirs()
-
-        fun runCommand(vararg cmd: String) {
-            val process = ProcessBuilder(*cmd)
-                .inheritIO()
-                .start()
-            val code = process.waitFor()
-            if (code != 0) {
-                throw GradleException("Command failed (${code}): ${cmd.joinToString(" ")}")
-            }
-        }
-
-        // Build required iconset sizes from icon.png without stretching.
-        // Resize to fit and then pad to square so non-square source images keep their aspect ratio.
-        val iconSizes = listOf(16, 32, 64, 128, 256, 512)
-        iconSizes.forEach { size ->
-            val normalTemp = iconWorkDir.resolve("tmp_${size}.png")
-            runCommand(
-                "sips",
-                "-Z", size.toString(),
-                sourcePng.absolutePath,
-                "--out", normalTemp.absolutePath
-            )
-            runCommand(
-                "sips",
-                "-p", size.toString(), size.toString(),
-                "--padColor", "FFFFFF",
-                normalTemp.absolutePath,
-                "--out", iconSetDir.resolve("icon_${size}x${size}.png").absolutePath
-            )
-
-            val retinaSize = size * 2
-            val retinaTemp = iconWorkDir.resolve("tmp_${retinaSize}.png")
-            runCommand(
-                "sips",
-                "-Z", retinaSize.toString(),
-                sourcePng.absolutePath,
-                "--out", retinaTemp.absolutePath
-            )
-            runCommand(
-                "sips",
-                "-p", retinaSize.toString(), retinaSize.toString(),
-                "--padColor", "FFFFFF",
-                retinaTemp.absolutePath,
-                "--out", iconSetDir.resolve("icon_${size}x${size}@2x.png").absolutePath
-            )
-        }
-
-        runCommand(
-            "iconutil",
-            "-c", "icns",
-            iconSetDir.absolutePath,
-            "-o", appIconIcns.absolutePath
+        commandLine(
+            jpackageExecutable.absolutePath,
+            "--type", "app-image",
+            "--name", appName,
+            "--dest", packageOutputDir.absolutePath,
+            "--input", packageInputDir.absolutePath,
+            "--main-jar", appJar.name,
+            "--main-class", application.mainClass.get(),
+            "--icon", appIconIcns.absolutePath,
+            "--app-version", "1.0",
+            "--vendor", "SnakeGame"
         )
 
-        delete(packageInputDir)
-        packageInputDir.mkdirs()
+        doFirst {
+            if (!jpackageExecutable.exists()) {
+                throw GradleException("jpackage executable not found at ${jpackageExecutable.absolutePath}")
+            }
 
-        // Copy app jar and runtime dependencies for jpackage input.
-        appJar.copyTo(packageInputDir.resolve(appJar.name), overwrite = true)
-        configurations.runtimeClasspath.get().files.forEach { dep ->
-            dep.copyTo(packageInputDir.resolve(dep.name), overwrite = true)
+            val sourcePng = rootProject.file("icon.png")
+            if (!sourcePng.exists()) {
+                throw GradleException("App icon not found at ${sourcePng.absolutePath}")
+            }
+
+            delete(iconWorkDir)
+            iconWorkDir.mkdirs()
+            val iconSetDir = iconWorkDir.resolve("SnakeGame.iconset")
+            iconSetDir.mkdirs()
+
+            fun runCommand(vararg cmd: String) {
+                val process = ProcessBuilder(*cmd)
+                    .inheritIO()
+                    .start()
+                val code = process.waitFor()
+                if (code != 0) {
+                    throw GradleException("Command failed (${code}): ${cmd.joinToString(" ")}")
+                }
+            }
+
+            // Build required iconset sizes from icon.png without stretching.
+            // Resize to fit and then pad to square so non-square source images keep their aspect ratio.
+            val iconSizes = listOf(16, 32, 64, 128, 256, 512)
+            iconSizes.forEach { size ->
+                val normalTemp = iconWorkDir.resolve("tmp_${size}.png")
+                runCommand(
+                    "sips",
+                    "-Z", size.toString(),
+                    sourcePng.absolutePath,
+                    "--out", normalTemp.absolutePath
+                )
+                runCommand(
+                    "sips",
+                    "-p", size.toString(), size.toString(),
+                    "--padColor", "FFFFFF",
+                    normalTemp.absolutePath,
+                    "--out", iconSetDir.resolve("icon_${size}x${size}.png").absolutePath
+                )
+
+                val retinaSize = size * 2
+                val retinaTemp = iconWorkDir.resolve("tmp_${retinaSize}.png")
+                runCommand(
+                    "sips",
+                    "-Z", retinaSize.toString(),
+                    sourcePng.absolutePath,
+                    "--out", retinaTemp.absolutePath
+                )
+                runCommand(
+                    "sips",
+                    "-p", retinaSize.toString(), retinaSize.toString(),
+                    "--padColor", "FFFFFF",
+                    retinaTemp.absolutePath,
+                    "--out", iconSetDir.resolve("icon_${size}x${size}@2x.png").absolutePath
+                )
+            }
+
+            runCommand(
+                "iconutil",
+                "-c", "icns",
+                iconSetDir.absolutePath,
+                "-o", appIconIcns.absolutePath
+            )
+
+            delete(packageInputDir)
+            packageInputDir.mkdirs()
+
+            // Copy app jar and runtime dependencies for jpackage input.
+            appJar.copyTo(packageInputDir.resolve(appJar.name), overwrite = true)
+            configurations.runtimeClasspath.get().files.forEach { dep ->
+                dep.copyTo(packageInputDir.resolve(dep.name), overwrite = true)
+            }
+
+            delete(packageOutputDir.resolve("${appName}.app"))
         }
-
-        delete(packageOutputDir.resolve("${appName}.app"))
     }
+}
+
+registerBundleMacAppTask(
+    taskName = "bundleMacApp",
+    outputDirectoryName = "macos",
+    taskDescription = "Builds a macOS .app bundle using configurable jpackage",
+    jpackageExecutableProvider = defaultBundleJpackageExecutable
+)
+
+registerBundleMacAppTask(
+    taskName = "bundleMacAppArm",
+    outputDirectoryName = "macos-arm64",
+    taskDescription = "Builds an Apple Silicon (arm64) macOS .app bundle",
+    jpackageExecutableProvider = toolchainJpackageExecutable
+)
+
+registerBundleMacAppTask(
+    taskName = "bundleMacAppIntel",
+    outputDirectoryName = "macos-x64",
+    taskDescription = "Builds an Intel (x86_64) macOS .app bundle",
+    jpackageExecutableProvider = intelBundleJpackageExecutable
+)
+
+tasks.register("bundleMacAppBoth") {
+    group = "distribution"
+    description = "Builds both arm64 and x86_64 macOS .app bundles"
+    dependsOn("bundleMacAppArm", "bundleMacAppIntel")
 }
