@@ -24,19 +24,7 @@ For iOS <br>
 Visit this [Repository](https://github.com/k3v1n125/SnakeGameiOS)
 
 Alternative way for MacOS <br>
-Double-click SnakeGame.app in Finder
-
-To build both macOS architectures in one command pattern, run: <br>
-```bash
-./gradlew :app:bundleMacAppBoth -Psnakegame.jpackageExecutableIntel=$PWD/.jdks/temurin17-x64/Contents/Home/bin/jpackage --no-configuration-cache
-```
-
-Architecture-specific commands: <br>
-```bash
-./gradlew :app:bundleMacAppArm
-./gradlew :app:bundleMacAppIntel -Psnakegame.jpackageExecutableIntel=$PWD/.jdks/temurin17-x64/Contents/Home/bin/jpackage
-```
-
+Unzip macos-arm64 (or macos-x64 for Mac with intel), then double-click SnakeGame in the extracted folder in Finder
 
 ## Modification
 
