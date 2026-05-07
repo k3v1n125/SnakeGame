@@ -23,15 +23,18 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import org.game.Item.Apple;
+import org.game.Item.Hammer;
 import org.game.Item.Item;
 import org.game.Item.Pineapple;
 import org.game.Item.Star;
 import org.game.Item.Wall;
+import org.game.Item.WallRemover;
 import org.game.ItemFactory.AppleFactory;
 import org.game.ItemFactory.HammerFactory;
 import org.game.ItemFactory.ItemFactory;
 import org.game.ItemFactory.PineappleFactory;
 import org.game.ItemFactory.StarFactory;
+import org.game.ItemFactory.WallRemoverFactory;
 import org.game.StatsBoard.StatsBoard;
 
 public class Board extends JPanel implements ActionListener {
@@ -58,6 +61,7 @@ public class Board extends JPanel implements ActionListener {
     private boolean starIntroduced = false;
     private boolean pineappleIntroduced = false;
     private boolean hammerIntroduced = false;
+    private boolean wallRemoverIntroduced = false;
 
     private boolean leftDirection = false;
     private boolean rightDirection = true;
@@ -318,26 +322,46 @@ public class Board extends JPanel implements ActionListener {
             }
         }
 
+        if (statsBoard.getHammerCollected() == 10 && !wallRemoverIntroduced && hammerIntroduced) {
+            if (locateItem(new WallRemoverFactory())) {
+                wallRemoverIntroduced = true;
+            }
+        }
+
         ensureAppleAvailability();
     }
 
     private void checkItem() {
         ArrayList<Item> removeItems = new ArrayList<>();
+        ArrayList<Item> noRefresh = new ArrayList<>();
         for (Item item : items) {
             if ((x[0] == item.getX()) && (y[0] == item.getY())) {
-                if (item instanceof Pineapple && statsBoard.getSnakeLength() == 1) {
-                    finishGame(false);
+                if (item instanceof WallRemover) {
+                    wallRemoverIntroduced = false;
+                    hammerIntroduced = false;
+                    for (Item wallItem : items) {
+                        if (wallItem instanceof Wall || wallItem instanceof Hammer) {
+                            noRefresh.add(wallItem);
+                            statsBoard.increaseWallsDestroyed();
+                        }
+                    }
+                    noRefresh.add(item);
+                } else {
+                    if (item instanceof Pineapple && statsBoard.getSnakeLength() == 1) {
+                        finishGame(false);
+                        removeItems.add(item);
+                        continue;
+                    }
                     removeItems.add(item);
-                    continue;
                 }
                 item.itemEffect(statsBoard.getGameStats());
-                removeItems.add(item);
                 if (statsBoard.getLives() <= 0) {
                     finishGame(false);
                     break;
                 }
             }
         }
+        items.removeAll(noRefresh);
         if (!inGame) {
             return;
         }
@@ -481,7 +505,7 @@ public class Board extends JPanel implements ActionListener {
                 }
             }
             if (addHammer) {
-                locateItem(new HammerFactory());
+                locateItem(new HammerFactory()); // first hammer
                 statsBoard.unlockHammer();
             }
             items.addAll(wallsToAdd);

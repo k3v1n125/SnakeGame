@@ -60,6 +60,14 @@ public class StatsBoard extends JFrame implements GameStatsListener {
         gameStats.setLives(lives);
     }
 
+    public int getHammerCollected() {
+        return gameStats.getHammerCollected();
+    }
+
+    public void increaseWallsDestroyed() {
+        gameStats.increaseWallsDestroyed();
+    }
+
     public void decreaseLives() {
         gameStats.decreaseLives();
     }

@@ -68,6 +68,14 @@ public class GameStats extends JPanel {
         useableHammer = useableHammer + 1;
     }
 
+    public int getHammerCollected() {
+        return hammerCollected;
+    }
+
+    public void setHammerCollected(int hammerCollected) {
+        this.hammerCollected = hammerCollected;
+    }
+
     public void decreaseUseableHammer(int amount) {
         useableHammer = useableHammer - amount;
     }
@@ -249,7 +257,7 @@ public class GameStats extends JPanel {
         String hammerText = "Locked";
         String useableHammerText = "Locked";
         String wallsDestroyedText = "Locked";
-        if (hammerUnlocked) {
+        if (hammerUnlocked || hammerCollected > 0 || useableHammer > 0 || wallsDestroyed > 0) {
             hammerText = String.valueOf(hammerCollected);
             useableHammerText = String.valueOf(useableHammer);
             wallsDestroyedText = String.valueOf(wallsDestroyed);

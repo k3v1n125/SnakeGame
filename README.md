@@ -7,24 +7,26 @@ The original code is licensed under the BSD 2-Clause License (2020, Jan Bodnar).
 Modifications and additional features have been added in this project.
 
 ## Running this program
-Make sure you have java installed, then move to SnakeGame directory and run: <br>
-For MacOS/Linux
+For MacOS <br>
+Unzip macos-arm64 (or macos-x64 for Mac with Intel), then double-click SnakeGame in the extracted folder in Finder
+
+Alternatively, make sure you have Java installed, then move to the SnakeGame directory and run:
 ```bash
 ./gradlew run
 ```
-For Windows
+
+For Windows <br>
+Make sure you have Java installed, then move to the SnakeGame directory and run:
 ```bash
 gradlew.bat run
 ```
+
 For Android <br>
 Download and install the apk <br>
 [Link to SnakeGameAndroid repo](https://github.com/k3v1n125/SnakeGameAndroid)
 
 For iOS <br>
 Visit this [Repository](https://github.com/k3v1n125/SnakeGameiOS)
-
-Alternative way for MacOS <br>
-Unzip macos-arm64 (or macos-x64 for Mac with intel), then double-click SnakeGame in the extracted folder in Finder
 
 ## Modification
 
@@ -44,7 +46,8 @@ Unzip macos-arm64 (or macos-x64 for Mac with intel), then double-click SnakeGame
 [Modification #12](#12-items-status) <br>
 [Modification #13](#13-new-pineapple-item--bug-fix) <br>
 [Modification #14](#14-modification--improvements) <br>
-[Modification #15](#15-wall--hammer)
+[Modification #15](#15-wall--hammer) <br>
+[Modification #16](#16-wall-remover)
 
 ### 1. A "stopwatch" for the game, shows the time the snake survived when the game is over
 
@@ -165,5 +168,9 @@ Use a direction queue to handle rapid key tapping
 For each 5 stars missed, that star would turn into a wall, and hammers would start to spawn <br>
 A wall can be broken through with 5 hammers; if there are not enough hammers, the snake's lives decrease <br>
 Modified items spawning priority and itemMissed methods
+
+### 16. Wall remover
+When 10 hammers are collected, a new item, the wall remover, will appear. <br>
+When a wall remover is collected, all the walls and hammers in the game board will be removed, and usable hammer count will drop to 0, and hammerCollected will decrease by 10
 
 ### Expected next modifications: new feature, new achievements, penalty for item missed
