@@ -10,6 +10,6 @@ build
 app/saves
 saves
 
-.DS_Store
+*/.DS_Store
 .vscode
 .jdks
